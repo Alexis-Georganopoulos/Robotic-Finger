@@ -1,0 +1,443 @@
+[rosmaster.main][INFO] 2019-10-16 18:10:36,101: initialization complete, waiting for shutdown
+[rosmaster.main][INFO] 2019-10-16 18:10:36,101: Starting ROS Master Node
+[xmlrpc][INFO] 2019-10-16 18:10:36,102: XML-RPC server binding to 0.0.0.0:11311
+[xmlrpc][INFO] 2019-10-16 18:10:36,102: Started XML-RPC server [http://student-lasa:11311/]
+[rosmaster.master][INFO] 2019-10-16 18:10:36,102: Master initialized: port[11311], uri[http://student-lasa:11311/]
+[xmlrpc][INFO] 2019-10-16 18:10:36,102: xml rpc node: starting XML-RPC server
+[rosmaster.master][INFO] 2019-10-16 18:10:36,201: +PARAM [/run_id] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:36,204: +PARAM [/roslaunch/uris/host_student_lasa__45981] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:36,254: +PARAM [/rosversion] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:36,254: +PARAM [/rosdistro] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:36,258: +SERVICE [/rosout/get_loggers] /rosout http://student-lasa:33717/
+[rosmaster.master][INFO] 2019-10-16 18:10:36,258: +SERVICE [/rosout/set_logger_level] /rosout http://student-lasa:33717/
+[rosmaster.master][INFO] 2019-10-16 18:10:36,261: +PUB [/rosout_agg] /rosout http://student-lasa:33717/
+[rosmaster.master][INFO] 2019-10-16 18:10:36,263: +SUB [/rosout] /rosout http://student-lasa:33717/
+[rosmaster.master][INFO] 2019-10-16 18:10:38,386: +PARAM [/roslaunch/uris/host_student_lasa__41201] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:38,387: +PARAM [/rosdistro] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:38,387: +PARAM [/vrpn_client_node/refresh_tracker_frequency] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:38,388: +PARAM [/vrpn_client_node/port] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:38,388: +PARAM [/vrpn_client_node/broadcast_tf] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:38,388: +PARAM [/vrpn_client_node/frame_id] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:38,388: +PARAM [/vrpn_client_node/server] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:38,388: +PARAM [/rosversion] by /roslaunch
+[rosmaster.master][INFO] 2019-10-16 18:10:38,419: +PUB [/rosout] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:10:38,420: +SERVICE [/vrpn_client_node/get_loggers] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:10:38,420: +SERVICE [/vrpn_client_node/set_logger_level] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:10:38,508: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/']
+[rosmaster.master][INFO] 2019-10-16 18:10:38,512: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:10:39,493: +PUB [/vrpn_client_node/baseHand/pose] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:10:39,494: +PUB [/tf] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:10:39,495: +PUB [/vrpn_client_node/normalSurface/pose] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:10:39,496: +PUB [/vrpn_client_node/guard/pose] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:10:52,505: +PUB [/rosout] /biotac_sensors_pub_1571242252503578444 http://student-lasa:33843/
+[rosmaster.master][INFO] 2019-10-16 18:10:52,505: +SERVICE [/biotac_sensors_pub_1571242252503578444/get_loggers] /biotac_sensors_pub_1571242252503578444 http://student-lasa:33843/
+[rosmaster.master][INFO] 2019-10-16 18:10:52,506: +SERVICE [/biotac_sensors_pub_1571242252503578444/set_logger_level] /biotac_sensors_pub_1571242252503578444 http://student-lasa:33843/
+[rosmaster.master][INFO] 2019-10-16 18:10:52,506: +PUB [/biotac_pub] /biotac_sensors_pub_1571242252503578444 http://student-lasa:33843/
+[rosmaster.master][INFO] 2019-10-16 18:10:52,544: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:10:52,545: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:11:00,006: +PUB [/rosout] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:00,012: +SERVICE [/biochip_listener_14923_1571242259885/get_loggers] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:00,015: +SERVICE [/biochip_listener_14923_1571242259885/set_logger_level] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:00,019: +SUB [/biotac_pub] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:00,023: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:00,027: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:00,060: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:40189/']
+[rosmaster.master][INFO] 2019-10-16 18:11:00,061: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:40189/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:11:51,168: -SUB [/biotac_pub] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:51,169: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:51,169: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:51,169: -PUB [/rosout] /biochip_listener_14923_1571242259885 http://student-lasa:40189/
+[rosmaster.master][INFO] 2019-10-16 18:11:51,169: -SERVICE [/biochip_listener_14923_1571242259885/set_logger_level] /biochip_listener_14923_1571242259885 rosrpc://student-lasa:39155
+[rosmaster.master][INFO] 2019-10-16 18:11:51,169: -SERVICE [/biochip_listener_14923_1571242259885/get_loggers] /biochip_listener_14923_1571242259885 rosrpc://student-lasa:39155
+[rosmaster.master][INFO] 2019-10-16 18:11:51,226: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:11:51,227: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:11:58,336: +PUB [/rosout] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:11:58,341: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:41353/']
+[rosmaster.master][INFO] 2019-10-16 18:11:58,342: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:41353/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:11:58,343: +SERVICE [/biochip_listener_14965_1571242318214/get_loggers] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:11:58,346: +SERVICE [/biochip_listener_14965_1571242318214/set_logger_level] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:11:58,350: +SUB [/biotac_pub] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:11:58,354: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:11:58,358: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:12:03,417: -SUB [/biotac_pub] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:12:03,417: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:12:03,418: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:12:03,418: -PUB [/rosout] /biochip_listener_14965_1571242318214 http://student-lasa:41353/
+[rosmaster.master][INFO] 2019-10-16 18:12:03,418: -SERVICE [/biochip_listener_14965_1571242318214/get_loggers] /biochip_listener_14965_1571242318214 rosrpc://student-lasa:43385
+[rosmaster.master][INFO] 2019-10-16 18:12:03,418: -SERVICE [/biochip_listener_14965_1571242318214/set_logger_level] /biochip_listener_14965_1571242318214 rosrpc://student-lasa:43385
+[rosmaster.master][INFO] 2019-10-16 18:12:03,451: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:12:03,452: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:12:13,557: +PUB [/rosout] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:13,563: +SERVICE [/biochip_listener_15002_1571242333435/get_loggers] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:13,566: +SERVICE [/biochip_listener_15002_1571242333435/set_logger_level] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:13,570: +SUB [/biotac_pub] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:13,573: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:34433/']
+[rosmaster.master][INFO] 2019-10-16 18:12:13,574: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:13,575: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:34433/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:12:13,578: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:19,651: -SUB [/biotac_pub] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:19,651: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:19,652: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:19,652: -PUB [/rosout] /biochip_listener_15002_1571242333435 http://student-lasa:34433/
+[rosmaster.master][INFO] 2019-10-16 18:12:19,652: -SERVICE [/biochip_listener_15002_1571242333435/set_logger_level] /biochip_listener_15002_1571242333435 rosrpc://student-lasa:34051
+[rosmaster.master][INFO] 2019-10-16 18:12:19,652: -SERVICE [/biochip_listener_15002_1571242333435/get_loggers] /biochip_listener_15002_1571242333435 rosrpc://student-lasa:34051
+[rosmaster.master][INFO] 2019-10-16 18:12:19,681: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:12:19,682: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:12:28,637: +PUB [/rosout] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:28,643: +SERVICE [/biochip_listener_15037_1571242348515/get_loggers] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:28,646: +SERVICE [/biochip_listener_15037_1571242348515/set_logger_level] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:28,650: +SUB [/biotac_pub] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:28,654: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:28,658: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:28,700: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:38721/']
+[rosmaster.master][INFO] 2019-10-16 18:12:28,701: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:38721/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:12:30,412: -SUB [/biotac_pub] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:30,413: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:30,413: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:30,413: -PUB [/rosout] /biochip_listener_15037_1571242348515 http://student-lasa:38721/
+[rosmaster.master][INFO] 2019-10-16 18:12:30,413: -SERVICE [/biochip_listener_15037_1571242348515/set_logger_level] /biochip_listener_15037_1571242348515 rosrpc://student-lasa:43121
+[rosmaster.master][INFO] 2019-10-16 18:12:30,413: -SERVICE [/biochip_listener_15037_1571242348515/get_loggers] /biochip_listener_15037_1571242348515 rosrpc://student-lasa:43121
+[rosmaster.master][INFO] 2019-10-16 18:12:30,503: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:12:30,504: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:12:38,197: +PUB [/rosout] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:38,204: +SERVICE [/biochip_listener_15072_1571242358075/get_loggers] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:38,206: +SERVICE [/biochip_listener_15072_1571242358075/set_logger_level] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:38,210: +SUB [/biotac_pub] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:38,214: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:38,218: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:38,218: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:36393/']
+[rosmaster.master][INFO] 2019-10-16 18:12:38,219: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:36393/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:12:43,471: -SUB [/biotac_pub] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:43,471: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:43,471: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:43,471: -PUB [/rosout] /biochip_listener_15072_1571242358075 http://student-lasa:36393/
+[rosmaster.master][INFO] 2019-10-16 18:12:43,471: -SERVICE [/biochip_listener_15072_1571242358075/get_loggers] /biochip_listener_15072_1571242358075 rosrpc://student-lasa:42185
+[rosmaster.master][INFO] 2019-10-16 18:12:43,471: -SERVICE [/biochip_listener_15072_1571242358075/set_logger_level] /biochip_listener_15072_1571242358075 rosrpc://student-lasa:42185
+[rosmaster.master][INFO] 2019-10-16 18:12:43,527: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:12:43,528: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:12:51,409: +PUB [/rosout] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:51,415: +SERVICE [/biochip_listener_15107_1571242371288/get_loggers] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:51,418: +SERVICE [/biochip_listener_15107_1571242371288/set_logger_level] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:51,422: +SUB [/biotac_pub] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:51,426: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:51,430: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:51,447: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:41691/']
+[rosmaster.master][INFO] 2019-10-16 18:12:51,448: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:41691/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:12:54,173: -SUB [/biotac_pub] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:54,173: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:54,173: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:54,173: -PUB [/rosout] /biochip_listener_15107_1571242371288 http://student-lasa:41691/
+[rosmaster.master][INFO] 2019-10-16 18:12:54,174: -SERVICE [/biochip_listener_15107_1571242371288/set_logger_level] /biochip_listener_15107_1571242371288 rosrpc://student-lasa:46321
+[rosmaster.master][INFO] 2019-10-16 18:12:54,174: -SERVICE [/biochip_listener_15107_1571242371288/get_loggers] /biochip_listener_15107_1571242371288 rosrpc://student-lasa:46321
+[rosmaster.master][INFO] 2019-10-16 18:12:54,251: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:12:54,252: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:14:29,642: +PUB [/rosout] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:29,648: +SERVICE [/biochip_listener_15147_1571242469521/get_loggers] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:29,651: +SERVICE [/biochip_listener_15147_1571242469521/set_logger_level] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:29,655: +SUB [/biotac_pub] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:29,659: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:29,662: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:29,672: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:35475/']
+[rosmaster.master][INFO] 2019-10-16 18:14:29,673: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:35475/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:14:40,747: -SUB [/biotac_pub] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:40,747: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:40,747: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:40,747: -PUB [/rosout] /biochip_listener_15147_1571242469521 http://student-lasa:35475/
+[rosmaster.master][INFO] 2019-10-16 18:14:40,747: -SERVICE [/biochip_listener_15147_1571242469521/set_logger_level] /biochip_listener_15147_1571242469521 rosrpc://student-lasa:33295
+[rosmaster.master][INFO] 2019-10-16 18:14:40,747: -SERVICE [/biochip_listener_15147_1571242469521/get_loggers] /biochip_listener_15147_1571242469521 rosrpc://student-lasa:33295
+[rosmaster.master][INFO] 2019-10-16 18:14:40,788: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:14:40,788: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:14:49,077: +PUB [/rosout] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:49,083: +SERVICE [/biochip_listener_15185_1571242488955/get_loggers] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:49,085: +SERVICE [/biochip_listener_15185_1571242488955/set_logger_level] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:49,089: +SUB [/biotac_pub] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:49,093: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:49,096: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:49,106: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:34083/']
+[rosmaster.master][INFO] 2019-10-16 18:14:49,107: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:34083/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:14:50,076: -SUB [/biotac_pub] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:50,076: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:50,076: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:50,076: -PUB [/rosout] /biochip_listener_15185_1571242488955 http://student-lasa:34083/
+[rosmaster.master][INFO] 2019-10-16 18:14:50,076: -SERVICE [/biochip_listener_15185_1571242488955/set_logger_level] /biochip_listener_15185_1571242488955 rosrpc://student-lasa:35483
+[rosmaster.master][INFO] 2019-10-16 18:14:50,076: -SERVICE [/biochip_listener_15185_1571242488955/get_loggers] /biochip_listener_15185_1571242488955 rosrpc://student-lasa:35483
+[rosmaster.master][INFO] 2019-10-16 18:14:50,109: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:14:50,110: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:14:57,388: +PUB [/rosout] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:14:57,394: +SERVICE [/biochip_listener_15221_1571242497266/get_loggers] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:14:57,397: +SERVICE [/biochip_listener_15221_1571242497266/set_logger_level] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:14:57,401: +SUB [/biotac_pub] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:14:57,405: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:14:57,409: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:14:57,424: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:39083/']
+[rosmaster.master][INFO] 2019-10-16 18:14:57,425: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:39083/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:15:12,225: -SUB [/biotac_pub] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:15:12,225: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:15:12,225: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:15:12,225: -PUB [/rosout] /biochip_listener_15221_1571242497266 http://student-lasa:39083/
+[rosmaster.master][INFO] 2019-10-16 18:15:12,225: -SERVICE [/biochip_listener_15221_1571242497266/get_loggers] /biochip_listener_15221_1571242497266 rosrpc://student-lasa:41319
+[rosmaster.master][INFO] 2019-10-16 18:15:12,225: -SERVICE [/biochip_listener_15221_1571242497266/set_logger_level] /biochip_listener_15221_1571242497266 rosrpc://student-lasa:41319
+[rosmaster.master][INFO] 2019-10-16 18:15:12,244: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:15:12,244: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:15:18,271: +PUB [/rosout] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:18,276: +SERVICE [/biochip_listener_15258_1571242518150/get_loggers] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:18,278: +SERVICE [/biochip_listener_15258_1571242518150/set_logger_level] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:18,282: +SUB [/biotac_pub] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:18,285: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:18,289: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:18,358: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:34779/']
+[rosmaster.master][INFO] 2019-10-16 18:15:18,359: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:34779/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:15:36,378: -SUB [/biotac_pub] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:36,378: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:36,378: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:36,378: -PUB [/rosout] /biochip_listener_15258_1571242518150 http://student-lasa:34779/
+[rosmaster.master][INFO] 2019-10-16 18:15:36,378: -SERVICE [/biochip_listener_15258_1571242518150/set_logger_level] /biochip_listener_15258_1571242518150 rosrpc://student-lasa:40211
+[rosmaster.master][INFO] 2019-10-16 18:15:36,378: -SERVICE [/biochip_listener_15258_1571242518150/get_loggers] /biochip_listener_15258_1571242518150 rosrpc://student-lasa:40211
+[rosmaster.master][INFO] 2019-10-16 18:15:36,383: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:15:36,383: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:15:42,864: +PUB [/rosout] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:42,869: +SERVICE [/biochip_listener_15294_1571242542743/get_loggers] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:42,871: +SERVICE [/biochip_listener_15294_1571242542743/set_logger_level] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:42,874: +SUB [/biotac_pub] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:42,879: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:42,883: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:42,897: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:35495/']
+[rosmaster.master][INFO] 2019-10-16 18:15:42,898: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:35495/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:15:57,053: -SUB [/biotac_pub] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:57,053: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:57,053: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:57,053: -PUB [/rosout] /biochip_listener_15294_1571242542743 http://student-lasa:35495/
+[rosmaster.master][INFO] 2019-10-16 18:15:57,053: -SERVICE [/biochip_listener_15294_1571242542743/set_logger_level] /biochip_listener_15294_1571242542743 rosrpc://student-lasa:44793
+[rosmaster.master][INFO] 2019-10-16 18:15:57,053: -SERVICE [/biochip_listener_15294_1571242542743/get_loggers] /biochip_listener_15294_1571242542743 rosrpc://student-lasa:44793
+[rosmaster.master][INFO] 2019-10-16 18:15:57,118: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:15:57,119: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:16:04,117: +PUB [/rosout] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:16:04,122: +SERVICE [/biochip_listener_15330_1571242563995/get_loggers] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:16:04,125: +SERVICE [/biochip_listener_15330_1571242563995/set_logger_level] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:16:04,129: +SUB [/biotac_pub] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:16:04,132: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:16:04,135: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:39253/']
+[rosmaster.master][INFO] 2019-10-16 18:16:04,136: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:39253/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:16:04,137: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:17:24,066: -SUB [/biotac_pub] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:17:24,066: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:17:24,066: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:17:24,066: -PUB [/rosout] /biochip_listener_15330_1571242563995 http://student-lasa:39253/
+[rosmaster.master][INFO] 2019-10-16 18:17:24,067: -SERVICE [/biochip_listener_15330_1571242563995/set_logger_level] /biochip_listener_15330_1571242563995 rosrpc://student-lasa:40495
+[rosmaster.master][INFO] 2019-10-16 18:17:24,067: -SERVICE [/biochip_listener_15330_1571242563995/get_loggers] /biochip_listener_15330_1571242563995 rosrpc://student-lasa:40495
+[rosmaster.master][INFO] 2019-10-16 18:17:24,143: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:17:24,144: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:18:53,503: +PUB [/rosout] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:18:53,508: +SERVICE [/biochip_listener_15415_1571242733382/get_loggers] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:18:53,510: +SERVICE [/biochip_listener_15415_1571242733382/set_logger_level] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:18:53,513: +SUB [/biotac_pub] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:18:53,517: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:18:53,521: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:18:53,552: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:38559/']
+[rosmaster.master][INFO] 2019-10-16 18:18:53,553: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:38559/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:19:12,369: -SUB [/biotac_pub] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:19:12,370: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:19:12,370: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:19:12,370: -PUB [/rosout] /biochip_listener_15415_1571242733382 http://student-lasa:38559/
+[rosmaster.master][INFO] 2019-10-16 18:19:12,370: -SERVICE [/biochip_listener_15415_1571242733382/get_loggers] /biochip_listener_15415_1571242733382 rosrpc://student-lasa:33721
+[rosmaster.master][INFO] 2019-10-16 18:19:12,370: -SERVICE [/biochip_listener_15415_1571242733382/set_logger_level] /biochip_listener_15415_1571242733382 rosrpc://student-lasa:33721
+[rosmaster.master][INFO] 2019-10-16 18:19:12,375: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:19:12,376: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:19:14,665: +PUB [/rosout] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:14,669: +SERVICE [/biochip_listener_15453_1571242754544/get_loggers] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:14,670: +SERVICE [/biochip_listener_15453_1571242754544/set_logger_level] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:14,673: +SUB [/biotac_pub] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:14,676: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:14,680: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:14,680: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:37311/']
+[rosmaster.master][INFO] 2019-10-16 18:19:14,682: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:37311/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:19:17,226: -SUB [/biotac_pub] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:17,226: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:17,227: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:17,227: -PUB [/rosout] /biochip_listener_15453_1571242754544 http://student-lasa:37311/
+[rosmaster.master][INFO] 2019-10-16 18:19:17,227: -SERVICE [/biochip_listener_15453_1571242754544/set_logger_level] /biochip_listener_15453_1571242754544 rosrpc://student-lasa:40103
+[rosmaster.master][INFO] 2019-10-16 18:19:17,227: -SERVICE [/biochip_listener_15453_1571242754544/get_loggers] /biochip_listener_15453_1571242754544 rosrpc://student-lasa:40103
+[rosmaster.master][INFO] 2019-10-16 18:19:17,285: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:19:17,286: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:23:54,113: +PUB [/rosout] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:54,119: +SERVICE [/biochip_listener_15506_1571243033991/get_loggers] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:54,122: +SERVICE [/biochip_listener_15506_1571243033991/set_logger_level] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:54,126: +SUB [/biotac_pub] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:54,130: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:54,133: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:54,167: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:33609/']
+[rosmaster.master][INFO] 2019-10-16 18:23:54,168: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:33609/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:23:56,294: -SUB [/biotac_pub] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:56,295: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:56,295: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:56,295: -PUB [/rosout] /biochip_listener_15506_1571243033991 http://student-lasa:33609/
+[rosmaster.master][INFO] 2019-10-16 18:23:56,295: -SERVICE [/biochip_listener_15506_1571243033991/get_loggers] /biochip_listener_15506_1571243033991 rosrpc://student-lasa:46161
+[rosmaster.master][INFO] 2019-10-16 18:23:56,295: -SERVICE [/biochip_listener_15506_1571243033991/set_logger_level] /biochip_listener_15506_1571243033991 rosrpc://student-lasa:46161
+[rosmaster.master][INFO] 2019-10-16 18:23:56,371: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:23:56,373: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:23:59,049: +PUB [/rosout] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:23:59,055: +SERVICE [/biochip_listener_15543_1571243038927/get_loggers] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:23:59,057: +SERVICE [/biochip_listener_15543_1571243038927/set_logger_level] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:23:59,061: +SUB [/biotac_pub] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:23:59,065: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:23:59,068: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:23:59,079: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:42099/']
+[rosmaster.master][INFO] 2019-10-16 18:23:59,080: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:42099/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:24:22,613: -SUB [/biotac_pub] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:24:22,613: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:24:22,613: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:24:22,613: -PUB [/rosout] /biochip_listener_15543_1571243038927 http://student-lasa:42099/
+[rosmaster.master][INFO] 2019-10-16 18:24:22,613: -SERVICE [/biochip_listener_15543_1571243038927/set_logger_level] /biochip_listener_15543_1571243038927 rosrpc://student-lasa:41687
+[rosmaster.master][INFO] 2019-10-16 18:24:22,614: -SERVICE [/biochip_listener_15543_1571243038927/get_loggers] /biochip_listener_15543_1571243038927 rosrpc://student-lasa:41687
+[rosmaster.master][INFO] 2019-10-16 18:24:22,625: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:24:22,625: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:24:24,822: +PUB [/rosout] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:24,827: +SERVICE [/biochip_listener_15581_1571243064701/get_loggers] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:24,829: +SERVICE [/biochip_listener_15581_1571243064701/set_logger_level] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:24,829: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:46371/']
+[rosmaster.master][INFO] 2019-10-16 18:24:24,830: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:46371/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:24:24,833: +SUB [/biotac_pub] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:24,836: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:24,843: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:27,323: -SUB [/biotac_pub] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:27,323: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:27,323: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:27,323: -PUB [/rosout] /biochip_listener_15581_1571243064701 http://student-lasa:46371/
+[rosmaster.master][INFO] 2019-10-16 18:24:27,323: -SERVICE [/biochip_listener_15581_1571243064701/set_logger_level] /biochip_listener_15581_1571243064701 rosrpc://student-lasa:33291
+[rosmaster.master][INFO] 2019-10-16 18:24:27,324: -SERVICE [/biochip_listener_15581_1571243064701/get_loggers] /biochip_listener_15581_1571243064701 rosrpc://student-lasa:33291
+[rosmaster.master][INFO] 2019-10-16 18:24:27,333: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:24:27,333: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:24:32,555: +PUB [/rosout] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:32,560: +SERVICE [/biochip_listener_15616_1571243072433/get_loggers] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:32,563: +SERVICE [/biochip_listener_15616_1571243072433/set_logger_level] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:32,567: +SUB [/biotac_pub] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:32,571: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:32,574: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:32,631: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:33391/']
+[rosmaster.master][INFO] 2019-10-16 18:24:32,632: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:33391/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:24:37,587: -SUB [/biotac_pub] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:37,587: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:37,587: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:37,587: -PUB [/rosout] /biochip_listener_15616_1571243072433 http://student-lasa:33391/
+[rosmaster.master][INFO] 2019-10-16 18:24:37,587: -SERVICE [/biochip_listener_15616_1571243072433/set_logger_level] /biochip_listener_15616_1571243072433 rosrpc://student-lasa:37563
+[rosmaster.master][INFO] 2019-10-16 18:24:37,587: -SERVICE [/biochip_listener_15616_1571243072433/get_loggers] /biochip_listener_15616_1571243072433 rosrpc://student-lasa:37563
+[rosmaster.master][INFO] 2019-10-16 18:24:37,640: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:24:37,640: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:24:48,809: +PUB [/rosout] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:24:48,816: +SERVICE [/biochip_listener_15656_1571243088687/get_loggers] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:24:48,818: +SERVICE [/biochip_listener_15656_1571243088687/set_logger_level] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:24:48,822: +SUB [/biotac_pub] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:24:48,826: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:24:48,830: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:24:48,863: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:36789/']
+[rosmaster.master][INFO] 2019-10-16 18:24:48,864: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:36789/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:14,571: -SUB [/biotac_pub] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:25:14,572: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:25:14,572: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:25:14,572: -PUB [/rosout] /biochip_listener_15656_1571243088687 http://student-lasa:36789/
+[rosmaster.master][INFO] 2019-10-16 18:25:14,572: -SERVICE [/biochip_listener_15656_1571243088687/set_logger_level] /biochip_listener_15656_1571243088687 rosrpc://student-lasa:37695
+[rosmaster.master][INFO] 2019-10-16 18:25:14,572: -SERVICE [/biochip_listener_15656_1571243088687/get_loggers] /biochip_listener_15656_1571243088687 rosrpc://student-lasa:37695
+[rosmaster.master][INFO] 2019-10-16 18:25:14,595: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:25:14,596: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:24,477: +PUB [/rosout] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:24,483: +SERVICE [/biochip_listener_15693_1571243124356/get_loggers] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:24,485: +SERVICE [/biochip_listener_15693_1571243124356/set_logger_level] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:24,490: +SUB [/biotac_pub] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:24,493: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:24,497: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:24,517: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:40385/']
+[rosmaster.master][INFO] 2019-10-16 18:25:24,518: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:40385/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:26,297: -SUB [/biotac_pub] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:26,297: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:26,297: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:26,297: -PUB [/rosout] /biochip_listener_15693_1571243124356 http://student-lasa:40385/
+[rosmaster.master][INFO] 2019-10-16 18:25:26,297: -SERVICE [/biochip_listener_15693_1571243124356/get_loggers] /biochip_listener_15693_1571243124356 rosrpc://student-lasa:35141
+[rosmaster.master][INFO] 2019-10-16 18:25:26,298: -SERVICE [/biochip_listener_15693_1571243124356/set_logger_level] /biochip_listener_15693_1571243124356 rosrpc://student-lasa:35141
+[rosmaster.master][INFO] 2019-10-16 18:25:26,321: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:25:26,322: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:32,775: +PUB [/rosout] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:32,780: +SERVICE [/biochip_listener_15728_1571243132655/get_loggers] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:32,783: +SERVICE [/biochip_listener_15728_1571243132655/set_logger_level] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:32,786: +SUB [/biotac_pub] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:32,789: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:32,795: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:32,837: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:46349/']
+[rosmaster.master][INFO] 2019-10-16 18:25:32,838: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:46349/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:34,695: -SUB [/biotac_pub] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:34,695: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:34,696: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:34,696: -PUB [/rosout] /biochip_listener_15728_1571243132655 http://student-lasa:46349/
+[rosmaster.master][INFO] 2019-10-16 18:25:34,696: -SERVICE [/biochip_listener_15728_1571243132655/get_loggers] /biochip_listener_15728_1571243132655 rosrpc://student-lasa:39763
+[rosmaster.master][INFO] 2019-10-16 18:25:34,696: -SERVICE [/biochip_listener_15728_1571243132655/set_logger_level] /biochip_listener_15728_1571243132655 rosrpc://student-lasa:39763
+[rosmaster.master][INFO] 2019-10-16 18:25:34,741: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:25:34,742: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:41,613: +PUB [/rosout] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:41,619: +SERVICE [/biochip_listener_15763_1571243141492/get_loggers] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:41,621: +SERVICE [/biochip_listener_15763_1571243141492/set_logger_level] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:41,625: +SUB [/biotac_pub] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:41,629: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:41,633: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:41,656: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:44405/']
+[rosmaster.master][INFO] 2019-10-16 18:25:41,658: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:44405/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:49,446: -SUB [/biotac_pub] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:49,446: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:49,446: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:49,446: -PUB [/rosout] /biochip_listener_15763_1571243141492 http://student-lasa:44405/
+[rosmaster.master][INFO] 2019-10-16 18:25:49,446: -SERVICE [/biochip_listener_15763_1571243141492/get_loggers] /biochip_listener_15763_1571243141492 rosrpc://student-lasa:41347
+[rosmaster.master][INFO] 2019-10-16 18:25:49,446: -SERVICE [/biochip_listener_15763_1571243141492/set_logger_level] /biochip_listener_15763_1571243141492 rosrpc://student-lasa:41347
+[rosmaster.master][INFO] 2019-10-16 18:25:49,469: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:25:49,469: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:54,251: +PUB [/rosout] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:54,257: +SERVICE [/biochip_listener_15798_1571243154130/get_loggers] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:54,260: +SERVICE [/biochip_listener_15798_1571243154130/set_logger_level] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:54,264: +SUB [/biotac_pub] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:54,268: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:54,271: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:54,279: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:46559/']
+[rosmaster.master][INFO] 2019-10-16 18:25:54,280: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:46559/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:25:59,204: -SUB [/biotac_pub] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:59,204: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:59,204: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:59,204: -PUB [/rosout] /biochip_listener_15798_1571243154130 http://student-lasa:46559/
+[rosmaster.master][INFO] 2019-10-16 18:25:59,204: -SERVICE [/biochip_listener_15798_1571243154130/set_logger_level] /biochip_listener_15798_1571243154130 rosrpc://student-lasa:39005
+[rosmaster.master][INFO] 2019-10-16 18:25:59,204: -SERVICE [/biochip_listener_15798_1571243154130/get_loggers] /biochip_listener_15798_1571243154130 rosrpc://student-lasa:39005
+[rosmaster.master][INFO] 2019-10-16 18:25:59,288: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:25:59,289: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:26:02,138: +PUB [/rosout] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:26:02,144: +SERVICE [/biochip_listener_15834_1571243162016/get_loggers] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:26:02,146: +SERVICE [/biochip_listener_15834_1571243162016/set_logger_level] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:26:02,150: +SUB [/biotac_pub] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:26:02,153: +SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:26:02,157: +SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:26:02,196: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:35595/']
+[rosmaster.master][INFO] 2019-10-16 18:26:02,196: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/', 'http://student-lasa:35595/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:27:08,369: -SUB [/biotac_pub] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:27:08,369: -SUB [/vrpn_client_node/normalSurface/pose] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:27:08,369: -SUB [/vrpn_client_node/baseHand/pose] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:27:08,369: -PUB [/rosout] /biochip_listener_15834_1571243162016 http://student-lasa:35595/
+[rosmaster.master][INFO] 2019-10-16 18:27:08,370: -SERVICE [/biochip_listener_15834_1571243162016/get_loggers] /biochip_listener_15834_1571243162016 rosrpc://student-lasa:44663
+[rosmaster.master][INFO] 2019-10-16 18:27:08,370: -SERVICE [/biochip_listener_15834_1571243162016/set_logger_level] /biochip_listener_15834_1571243162016 rosrpc://student-lasa:44663
+[rosmaster.master][INFO] 2019-10-16 18:27:08,385: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:27:08,386: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:45067/', 'http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:28:05,400: -PUB [/rosout] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:28:05,400: -PUB [/vrpn_client_node/baseHand/pose] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:28:05,401: -PUB [/tf] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:28:05,401: -PUB [/vrpn_client_node/normalSurface/pose] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:28:05,402: -PUB [/vrpn_client_node/guard/pose] /vrpn_client_node http://student-lasa:45067/
+[rosmaster.master][INFO] 2019-10-16 18:28:05,402: -SERVICE [/vrpn_client_node/get_loggers] /vrpn_client_node rosrpc://student-lasa:45895
+[rosmaster.master][INFO] 2019-10-16 18:28:05,402: -SERVICE [/vrpn_client_node/set_logger_level] /vrpn_client_node rosrpc://student-lasa:45895
+[rosmaster.master][INFO] 2019-10-16 18:28:05,416: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:33843/']
+[rosmaster.master][INFO] 2019-10-16 18:28:05,417: publisherUpdate[/rosout] -> http://student-lasa:33717/ ['http://student-lasa:33843/']: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:28:05,902: -PUB [/rosout] /biotac_sensors_pub_1571242252503578444 http://student-lasa:33843/
+[rosmaster.master][INFO] 2019-10-16 18:28:05,904: -PUB [/biotac_pub] /biotac_sensors_pub_1571242252503578444 http://student-lasa:33843/
+[rosmaster.master][INFO] 2019-10-16 18:28:05,906: -SERVICE [/biotac_sensors_pub_1571242252503578444/get_loggers] /biotac_sensors_pub_1571242252503578444 rosrpc://student-lasa:54309
+[rosmaster.master][INFO] 2019-10-16 18:28:05,907: -SERVICE [/biotac_sensors_pub_1571242252503578444/set_logger_level] /biotac_sensors_pub_1571242252503578444 rosrpc://student-lasa:54309
+[rosmaster.master][INFO] 2019-10-16 18:28:05,918: publisherUpdate[/rosout] -> http://student-lasa:33717/ []
+[rosmaster.master][INFO] 2019-10-16 18:28:05,919: publisherUpdate[/rosout] -> http://student-lasa:33717/ []: sec=0.00, result=[1, '', 0]
+[rosmaster.master][INFO] 2019-10-16 18:28:06,821: -PUB [/rosout_agg] /rosout http://student-lasa:33717/
+[rosmaster.master][INFO] 2019-10-16 18:28:06,821: -SUB [/rosout] /rosout http://student-lasa:33717/
+[rosmaster.master][INFO] 2019-10-16 18:28:06,822: -SERVICE [/rosout/get_loggers] /rosout rosrpc://student-lasa:51935
+[rosmaster.master][INFO] 2019-10-16 18:28:06,823: -SERVICE [/rosout/set_logger_level] /rosout rosrpc://student-lasa:51935
+[rosmaster.main][INFO] 2019-10-16 18:28:06,932: keyboard interrupt, will exit
+[rosmaster.main][INFO] 2019-10-16 18:28:06,933: stopping master...
+[rospy.core][INFO] 2019-10-16 18:28:06,933: signal_shutdown [atexit]
