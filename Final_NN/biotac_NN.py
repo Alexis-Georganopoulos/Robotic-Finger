@@ -69,7 +69,7 @@ def nn_predict(electrode_data):
     z = x_z[0][1]
     
     ydir = np.sign(x)*np.sign(z)
-    check_if_real = 1 - x**x - z**z 
+    check_if_real = 1 - x**2 - z**2 
     
     if( check_if_real < 0):
         ymag = 0
