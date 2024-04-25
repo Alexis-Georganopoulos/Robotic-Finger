@@ -1,6 +1,15 @@
 # -*- coding: utf-8 -*-
 #LIBRARY IMPORTS
 
+
+import sys
+import os
+
+current_dir = os.path.dirname(os.path.abspath(__file__))
+sys.path.append(current_dir)
+
+
+
 #Needed for normal data manipulation
 from extract_data import extract,unshuffle
 import numpy as np
@@ -20,14 +29,16 @@ from sklearn.model_selection import train_test_split,KFold
 from statistics import mean, stdev
 
 
+
+
 #%%
 #NUMPY DATA
 
-X1 = np.transpose(extract("X1.txt"))
-Y1 = np.transpose(extract("Y1.txt"))
+X1 = np.transpose(extract(os.path.join(current_dir, "X1.txt")))
+Y1 = np.transpose(extract(os.path.join(current_dir, "Y1.txt")))
 
-X2 = np.transpose(extract("X2.txt"))
-Y2 = np.transpose(extract("Y2.txt"))
+X2 = np.transpose(extract(os.path.join(current_dir, "X2.txt")))
+Y2 = np.transpose(extract(os.path.join(current_dir, "Y2.txt")))
 
 X1 = np.concatenate((X1,X2),axis = 0)
 Y1 = np.concatenate((Y1,Y2),axis = 0)
@@ -162,7 +173,20 @@ for Layers in NL:
                     print('{}% Done'.format(round(running_total/total_perm*100,2)))
                     ##%%
                     #METRIC EVALUATION
-        
+                    metrics_row =           {'#_Layers':Layers,
+                                         '#_Nodes':Nodes,
+                                         'Learning_Rate':Learn,
+                                         'Max_reuse':Maxuse,
+                                         'L2_Penalty':L2Penalty,
+                                         'R^2':max(R2),
+                                         'sigma_R^2':stdev(R2),
+                                         'AIC':mean(AIC),
+                                         'sigma_AIC':stdev(AIC),
+                                         'Explained_Variance':mean(EV),
+                                         'sigma_Explained_Variance':stdev(EV),
+                                         'Mean_Squared_Error':mean(MSE),
+                                         'sigma_Mean_Squared_Error':stdev(MSE)} 
+                    
                     metrics_file = metrics_file.append({'#_Layers':Layers,
                                          '#_Nodes':Nodes,
                                          'Learning_Rate':Learn,
