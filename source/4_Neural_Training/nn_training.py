@@ -2,7 +2,7 @@
 #LIBRARY IMPORTS
 
 #Needed for normal data manipulation
-from extract_data import extract,unshuffle,macroplot
+from extract_data import extract,unshuffle
 import numpy as np
 import math
 
