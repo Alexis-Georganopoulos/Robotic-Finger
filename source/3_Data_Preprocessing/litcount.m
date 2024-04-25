@@ -5,7 +5,6 @@ global data_mat;
 data_mat = [];
 counter = 1;
 fid = fopen(filename);
-fid
 tline = fgetl(fid);
 
 while ischar(tline)
