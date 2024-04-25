@@ -1,0 +1,36 @@
+[rospy.client][INFO] 2019-10-16 18:24:32,450: init_node, name[/biochip_listener_15616_1571243072433], pid[15616]
+[xmlrpc][INFO] 2019-10-16 18:24:32,450: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2019-10-16 18:24:32,450: Started XML-RPC server [http://student-lasa:33391/]
+[rospy.init][INFO] 2019-10-16 18:24:32,451: ROS Slave URI: [http://student-lasa:33391/]
+[rospy.impl.masterslave][INFO] 2019-10-16 18:24:32,451: _ready: http://student-lasa:33391/
+[rospy.registration][INFO] 2019-10-16 18:24:32,451: Registering with master node http://localhost:11311
+[xmlrpc][INFO] 2019-10-16 18:24:32,451: xml rpc node: starting XML-RPC server
+[rospy.init][INFO] 2019-10-16 18:24:32,551: registered with master
+[rospy.rosout][INFO] 2019-10-16 18:24:32,551: initializing /rosout core topic
+[rospy.rosout][INFO] 2019-10-16 18:24:32,556: connected to core topic /rosout
+[rospy.simtime][INFO] 2019-10-16 18:24:32,558: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rospy.internal][INFO] 2019-10-16 18:24:32,619: topic[/vrpn_client_node/baseHand/pose] adding connection to [http://student-lasa:45067/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:32,619: topic[/vrpn_client_node/normalSurface/pose] adding connection to [http://student-lasa:45067/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:32,621: topic[/biotac_pub] adding connection to [http://student-lasa:33843/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:32,834: topic[/rosout] adding connection to [/rosout], count 0
+[rospy.core][INFO] 2019-10-16 18:24:37,564: signal_shutdown [signal-2]
+[rospy.internal][INFO] 2019-10-16 18:24:37,593: topic[/rosout] removing connection to /rosout
+[rospy.internal][INFO] 2019-10-16 18:24:37,603: topic[/biotac_pub] removing connection to http://student-lasa:33843/
+[rospy.internal][INFO] 2019-10-16 18:24:37,609: topic[/vrpn_client_node/normalSurface/pose] removing connection to http://student-lasa:45067/
+[rospy.internal][INFO] 2019-10-16 18:24:37,612: topic[/vrpn_client_node/baseHand/pose] removing connection to http://student-lasa:45067/
+[rospy.internal][ERROR] 2019-10-16 18:24:37,613: Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 729, in receive_once
+    self.stat_bytes += recv_buff(sock, b, p.buff_size)
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 103, in recv_buff
+    d = sock.recv(buff_size)
+error: [Errno 104] Connection reset by peer
+
+[rospy.impl.masterslave][INFO] 2019-10-16 18:24:37,613: signal-2
+[rospy.internal][ERROR] 2019-10-16 18:24:37,613: Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 729, in receive_once
+    self.stat_bytes += recv_buff(sock, b, p.buff_size)
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 103, in recv_buff
+    d = sock.recv(buff_size)
+error: [Errno 104] Connection reset by peer
+
+[rospy.core][INFO] 2019-10-16 18:24:37,714: signal_shutdown [atexit]

@@ -1,0 +1,37 @@
+[rospy.client][INFO] 2019-10-16 18:24:24,718: init_node, name[/biochip_listener_15581_1571243064701], pid[15581]
+[xmlrpc][INFO] 2019-10-16 18:24:24,718: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2019-10-16 18:24:24,718: Started XML-RPC server [http://student-lasa:46371/]
+[rospy.init][INFO] 2019-10-16 18:24:24,718: ROS Slave URI: [http://student-lasa:46371/]
+[rospy.impl.masterslave][INFO] 2019-10-16 18:24:24,718: _ready: http://student-lasa:46371/
+[xmlrpc][INFO] 2019-10-16 18:24:24,719: xml rpc node: starting XML-RPC server
+[rospy.registration][INFO] 2019-10-16 18:24:24,719: Registering with master node http://localhost:11311
+[rospy.init][INFO] 2019-10-16 18:24:24,819: registered with master
+[rospy.rosout][INFO] 2019-10-16 18:24:24,819: initializing /rosout core topic
+[rospy.rosout][INFO] 2019-10-16 18:24:24,823: connected to core topic /rosout
+[rospy.simtime][INFO] 2019-10-16 18:24:24,825: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rospy.internal][INFO] 2019-10-16 18:24:24,838: topic[/biotac_pub] adding connection to [http://student-lasa:33843/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:24,846: topic[/vrpn_client_node/normalSurface/pose] adding connection to [http://student-lasa:45067/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:24,847: topic[/vrpn_client_node/baseHand/pose] adding connection to [http://student-lasa:45067/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:25,032: topic[/rosout] adding connection to [/rosout], count 0
+[rospy.core][INFO] 2019-10-16 18:24:27,308: signal_shutdown [signal-2]
+[rospy.internal][INFO] 2019-10-16 18:24:27,331: topic[/rosout] removing connection to /rosout
+[rospy.internal][INFO] 2019-10-16 18:24:27,339: topic[/biotac_pub] removing connection to http://student-lasa:33843/
+[rospy.internal][WARNING] 2019-10-16 18:24:27,345: Unknown error initiating TCP/IP socket to student-lasa:54309 (http://student-lasa:33843/): Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 557, in connect
+    self.read_header()
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 650, in read_header
+    self._validate_header(read_ros_handshake_header(sock, self.read_buff, self.protocol.buff_size))
+AttributeError: 'NoneType' object has no attribute 'buff_size'
+
+[rospy.topics][ERROR] 2019-10-16 18:24:27,345: Traceback (most recent call last):
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/topics.py", line 326, in close
+    c.close()
+  File "/opt/ros/kinetic/lib/python2.7/dist-packages/rospy/impl/tcpros_base.py", line 838, in close
+    self.socket.close()
+AttributeError: 'NoneType' object has no attribute 'close'
+
+[rospy.internal][INFO] 2019-10-16 18:24:27,345: topic[/vrpn_client_node/normalSurface/pose] removing connection to http://student-lasa:45067/
+[rospy.internal][INFO] 2019-10-16 18:24:27,345: topic[/vrpn_client_node/baseHand/pose] removing connection to http://student-lasa:45067/
+[rospy.impl.masterslave][INFO] 2019-10-16 18:24:27,346: signal-2
+[rospy.core][INFO] 2019-10-16 18:24:27,830: signal_shutdown [signal-2]
+[rospy.core][INFO] 2019-10-16 18:24:27,831: signal_shutdown [atexit]

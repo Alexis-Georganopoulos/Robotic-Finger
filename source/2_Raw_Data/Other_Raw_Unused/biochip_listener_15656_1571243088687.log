@@ -1,0 +1,22 @@
+[rospy.client][INFO] 2019-10-16 18:24:48,704: init_node, name[/biochip_listener_15656_1571243088687], pid[15656]
+[xmlrpc][INFO] 2019-10-16 18:24:48,705: XML-RPC server binding to 0.0.0.0:0
+[xmlrpc][INFO] 2019-10-16 18:24:48,705: Started XML-RPC server [http://student-lasa:36789/]
+[rospy.init][INFO] 2019-10-16 18:24:48,705: ROS Slave URI: [http://student-lasa:36789/]
+[rospy.impl.masterslave][INFO] 2019-10-16 18:24:48,705: _ready: http://student-lasa:36789/
+[rospy.registration][INFO] 2019-10-16 18:24:48,705: Registering with master node http://localhost:11311
+[xmlrpc][INFO] 2019-10-16 18:24:48,705: xml rpc node: starting XML-RPC server
+[rospy.init][INFO] 2019-10-16 18:24:48,805: registered with master
+[rospy.rosout][INFO] 2019-10-16 18:24:48,806: initializing /rosout core topic
+[rospy.rosout][INFO] 2019-10-16 18:24:48,811: connected to core topic /rosout
+[rospy.simtime][INFO] 2019-10-16 18:24:48,813: /use_sim_time is not set, will not subscribe to simulated time [/clock] topic
+[rospy.internal][INFO] 2019-10-16 18:24:48,873: topic[/vrpn_client_node/baseHand/pose] adding connection to [http://student-lasa:45067/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:48,873: topic[/vrpn_client_node/normalSurface/pose] adding connection to [http://student-lasa:45067/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:48,875: topic[/biotac_pub] adding connection to [http://student-lasa:33843/], count 0
+[rospy.internal][INFO] 2019-10-16 18:24:49,066: topic[/rosout] adding connection to [/rosout], count 0
+[rospy.core][INFO] 2019-10-16 18:25:14,556: signal_shutdown [signal-2]
+[rospy.internal][INFO] 2019-10-16 18:25:14,582: topic[/rosout] removing connection to /rosout
+[rospy.internal][INFO] 2019-10-16 18:25:14,595: topic[/biotac_pub] removing connection to http://student-lasa:33843/
+[rospy.internal][INFO] 2019-10-16 18:25:14,602: topic[/vrpn_client_node/normalSurface/pose] removing connection to http://student-lasa:45067/
+[rospy.internal][INFO] 2019-10-16 18:25:14,607: topic[/vrpn_client_node/baseHand/pose] removing connection to http://student-lasa:45067/
+[rospy.impl.masterslave][INFO] 2019-10-16 18:25:14,610: signal-2
+[rospy.core][INFO] 2019-10-16 18:25:14,710: signal_shutdown [atexit]
