@@ -109,13 +109,14 @@ Y1_xz = Y1_xz.to_numpy()
 #del X1
 
 #%%
-#MODEL TRAINING
+# Grid Searching for best model parameters
 NL = [7]
 NPL = [5]
 LR = [0.01,0.011,0.012,0.013,0.014,0.015,0.016,0.017,0.018,0.019,0.02]################
 MI = [500]
 ALPH = [0.0001]#############
 LT = 'adaptive'
+
 total_perm = len(NL)*len(NPL)*len(LR)*len(MI)*len(ALPH)
 nkfold = 5
 kf = KFold(n_splits = 5,shuffle=False)
@@ -158,7 +159,7 @@ for Layers in NL:
                         y_pred = RNN1.predict(x_test)
                         
                         r2 = met.r2_score(y_test,y_pred)
-                        print(r2)
+                        #print(r2)
                         R2.append(r2)
                         
                         exvar = met.explained_variance_score(y_test,y_pred)
@@ -167,10 +168,11 @@ for Layers in NL:
                         meansqerr = met.mean_squared_error(y_test,y_pred)
                         MSE.append(meansqerr)
                         
-                        AIC2 = -200*math.log(abs(r2)) + Layers*Nodes
+                        AIC2 =  2*(Layers*(Nodes**2+Nodes) - math.log(1-r2)) 
                         AIC.append(AIC2)
                         
                     print('{}% Done'.format(round(running_total/total_perm*100,2)))
+                    print(' ')
                     ##%%
                     #METRIC EVALUATION
                     metrics_row =           {'#_Layers':Layers,
@@ -178,28 +180,15 @@ for Layers in NL:
                                          'Learning_Rate':Learn,
                                          'Max_reuse':Maxuse,
                                          'L2_Penalty':L2Penalty,
-                                         'R^2':max(R2),
+                                         'R^2':mean(R2),
                                          'sigma_R^2':stdev(R2),
                                          'AIC':mean(AIC),
                                          'sigma_AIC':stdev(AIC),
                                          'Explained_Variance':mean(EV),
                                          'sigma_Explained_Variance':stdev(EV),
                                          'Mean_Squared_Error':mean(MSE),
-                                         'sigma_Mean_Squared_Error':stdev(MSE)} 
-                    
-                    metrics_file = metrics_file.append({'#_Layers':Layers,
-                                         '#_Nodes':Nodes,
-                                         'Learning_Rate':Learn,
-                                         'Max_reuse':Maxuse,
-                                         'L2_Penalty':L2Penalty,
-                                         'R^2':max(R2),
-                                         'sigma_R^2':stdev(R2),
-                                         'AIC':mean(AIC),
-                                         'sigma_AIC':stdev(AIC),
-                                         'Explained_Variance':mean(EV),
-                                         'sigma_Explained_Variance':stdev(EV),
-                                         'Mean_Squared_Error':mean(MSE),
-                                         'sigma_Mean_Squared_Error':stdev(MSE)},ignore_index = True)
+                                         'sigma_Mean_Squared_Error':stdev(MSE)}
+                    metrics_file.loc[len(metrics_file)] = metrics_row
     
                   
                     running_total = running_total + 1
@@ -207,8 +196,8 @@ for Layers in NL:
 #metrics_file.to_csv("XY1_x.csv")
 #print('Metrics Saved')
 #%%FINAL VALIDATION
-metrics_file.to_csv("XY_xz_more_refine_nonshuffle_.csv")
-idx_best = metrics_file['AIC'].idxmin()
+metrics_file.to_csv(os.path.join(current_dir, "hyperparameter_grid_search_overview.csv"))
+idx_best = metrics_file['AIC'].idxmax()
 
 row_best = metrics_file[idx_best:(idx_best+1)]
 #%%
