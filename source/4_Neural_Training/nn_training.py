@@ -91,8 +91,7 @@ Y1_xz = Y1_xz.to_numpy()
 # Grid Searching for best model parameters
 NL = [7]
 NPL = [5]
-#LR = [0.01, 0.011,0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02]################
-LR = [0.01, 0.02]
+LR = [0.01, 0.011,0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02]################
 MI = [500]
 ALPH = [0.0001]#############
 LT = 'adaptive'
@@ -161,9 +160,9 @@ for Layers in NL:
                                          'Learning_Rate':Learn,
                                          'Max_reuse':Maxuse,
                                          'L2_Penalty':L2Penalty,
-                                         'R^2':mean(R2),
+                                         'R^2':max(R2),
                                          'sigma_R^2':stdev(R2),
-                                         'AIC':mean(AIC),
+                                         'AIC':max(AIC),
                                          'sigma_AIC':stdev(AIC),
                                          'Explained_Variance':mean(EV),
                                          'sigma_Explained_Variance':stdev(EV),
@@ -299,35 +298,6 @@ plt.tight_layout()
 
 #macroplot(X1_train,indices_train,suppvec)
 
-#%%
-from matplotlib import cm
-from matplotlib.ticker import LinearLocator, FormatStrFormatter
-
-def finger_to_grid(fingerarray):
-    
-    v1 = (fingerarray[2] + fingerarray[16] + fingerarray[12])/3
-    v2 = (fingerarray[3] + fingerarray[13] + fingerarray[17])/3
-    
-    maping = np.array([[fingerarray[7],fingerarray[6],fingerarray[8]],
-                       [fingerarray[0],fingerarray[9],fingerarray[10]],
-                       [fingerarray[1],fingerarray[16],fingerarray[11]],
-                       [fingerarray[2],v1,fingerarray[12]],
-                       [fingerarray[3],v2,fingerarray[13]],
-                       [fingerarray[4],fingerarray[17],fingerarray[14]],
-                       [fingerarray[5],fingerarray[18],fingerarray[15]]])
-    return maping
-
-fig = plt.figure()
-ax = fig.gca(projection='3d')
-
-FH = np.arange(1,4,1)
-FV = np.arange(1,8,1)
-
-FH,FV = np.meshgrid(FH,FV)
-Z = finger_to_grid(X1_test[0,:])
-
-surf = ax.plot_surface(FV, FH, Z, cmap=cm.coolwarm,
-                       linewidth=0, antialiased=False)
 
 
 
