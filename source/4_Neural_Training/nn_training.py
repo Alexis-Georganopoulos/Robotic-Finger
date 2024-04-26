@@ -72,15 +72,15 @@ del Y1_z
 
 #We will use the x and z directions for learning (y is deducable from x and z)
 indices = np.array(range(len(Y1_xz)))
-X1_train, X1_test, Y1_xz_train, Y1_xz_test,indices_train,indices_test = train_test_split(X1,Y1_xz,indices,
+X1_train, X1_validation, Y1_xz_train, Y1_xz_validation,indices_train,indices_validation = train_test_split(X1,Y1_xz,indices,
                                               test_size = 0.5,
                                               random_state = 42,
                                               shuffle = False)
 Y1_xz_train = Y1_xz_train.to_numpy()
-Y1_xz_test = Y1_xz_test.to_numpy()
+Y1_xz_validation = Y1_xz_validation.to_numpy()
 
 X1_train = X1_train.to_numpy()
-X1_test = X1_test.to_numpy()
+X1_validation = X1_validation.to_numpy()
 
 X1 = X1.to_numpy()
 Y1_xz = Y1_xz.to_numpy()
@@ -88,7 +88,9 @@ Y1_xz = Y1_xz.to_numpy()
 
 
 #%%
-# Grid Searching for best model parameters
+# Grid Searching for best model parameters(feel free to add/subtract more
+# but keep in mind it takes more time to search. The current defaults are the
+# optimal ones)
 NL = [7]
 NPL = [5]
 LR = [0.01, 0.011,0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02]
@@ -186,46 +188,51 @@ Learn = row_best["Learning_Rate"][0]
 Iterations = row_best["Max_reuse"][0]
 alph = row_best["L2_Penalty"][0]
 LT = 'adaptive'
-myr = 10
+
 optcoeff =  []
 optint = []
 prevr2 = [0,0]
+
+myr = 10
+pbar = tqdm(total = myr, desc="Grid Coverage", ncols = 100, leave=False)
 for i in range(myr):
-    print(i)
     RNN1 = MLPRegressor(hidden_layer_sizes=(Nodes,)*Layers,
                         max_iter=Iterations,
                         learning_rate_init=0.01,
                         alpha = 0.0001,
                         learning_rate = LT)
     RNN1.fit(X1_train,Y1_xz_train)
-    Y1_xz_pred = RNN1.predict(X1_test)
+    Y1_xz_pred = RNN1.predict(X1_validation)
     #Y1_xz_pred_all = RNN1.predict(X1)
     
     
-    r2 = [met.r2_score(Y1_xz_test[:,0],Y1_xz_pred[:,0]),
-          met.r2_score(Y1_xz_test[:,1],Y1_xz_pred[:,1])]
+    r2 = [met.r2_score(Y1_xz_validation[:,0],Y1_xz_pred[:,0]),
+          met.r2_score(Y1_xz_validation[:,1],Y1_xz_pred[:,1])]
     if((r2[0] + r2[1])/2 > (prevr2[0] +  prevr2[1])/2):
         optcoeff = RNN1.coefs_
         optint = RNN1.intercepts_
         prevr2 = r2
     
-    #print(met.r2_score(Y1_xz_test,Y1_xz_pred))
-    print(r2)
-    print(prevr2)   
+    pbar.update(1)
+    # print(r2)
+    # print(prevr2)   
 
+pbar.close()
+print('')
+print(prevr2)
 #%%
 
 RNN1.coefs_ = optcoeff
 RNN1.intercepts_ = optint
-Y1_xz_pred = RNN1.predict(X1_test[0,0:])
+Y1_xz_pred = RNN1.predict(X1_validation[0,0:])
 Y1_xz_pred_all = RNN1.predict(X1)
 
 #%%            
-#exvar = met.explained_variance_score(Y1_xz_test,Y1_xz_pred)
+#exvar = met.explained_variance_score(Y1_xz_validation,Y1_xz_pred)
 #maxerr = met.max_error(Y1_x_ztest,Y1_xz_pred)
-#meanabserr = met.mean_absolute_error(Y1_xz_test,Y1_xz_pred)
-#meansqerr = met.mean_squared_error(Y1_xz_test,Y1_xz_pred)
-#medianabserr = met.median_absolute_error(Y1_xz_test,Y1_xz_pred)
+#meanabserr = met.mean_absolute_error(Y1_xz_validation,Y1_xz_pred)
+#meansqerr = met.mean_squared_error(Y1_xz_validation,Y1_xz_pred)
+#medianabserr = met.median_absolute_error(Y1_xz_validation,Y1_xz_pred)
 ##AIC2 = -100*math.log(abs(r2)) + nsuppvec/50*19#-2*math.log10(r2)+nsuppvec*19
 #
 #validation_file = validation_file.append({'Gamma':Optimal_Gamma,'Epsilon':Optimal_Epsilon,'Penalty':Optimal_Penalty,
@@ -256,7 +263,7 @@ temp_x = [np.arange(-1.0, 0.3, 0.1),np.arange(0.3, 1.2, 0.1)]
 plt.subplot(222)
 plt.title('Phase plot of Z true against Z predicted')
 #plt.title('Gam = {}, Eps = {}, C = {}'.format(Optimal_Gamma,Optimal_Epsilon,Optimal_Penalty))
-y_ts_y_p, = plt.plot(Y1_xz_test[:,plotting_index],Y1_xz_pred[:,plotting_index],'ro')
+y_ts_y_p, = plt.plot(Y1_xz_validation[:,plotting_index],Y1_xz_pred[:,plotting_index],'ro')
 yy, = plt.plot(temp_x[plotting_index],temp_x[plotting_index],'b--')
 plt.legend([y_ts_y_p,yy],['(Z true,Z pred)','Z true = Z pred'])
 plt.xlabel('Z true')
@@ -265,10 +272,10 @@ plt.tight_layout()
 
 plt.subplot(223)
 plt.title('Z True and Z predicted data over index(time), R^2 = 0.82')
-redd, = plt.plot(unshuffle(indices_test,indices_test),
-                 unshuffle(Y1_xz_test[:,plotting_index],indices_test),'ro')
-blued, = plt.plot(unshuffle(indices_test,indices_test),
-                  unshuffle(Y1_xz_pred[:,plotting_index],indices_test),'go',alpha = 0.3)
+redd, = plt.plot(unshuffle(indices_validation,indices_validation),
+                 unshuffle(Y1_xz_validation[:,plotting_index],indices_validation),'ro')
+blued, = plt.plot(unshuffle(indices_validation,indices_validation),
+                  unshuffle(Y1_xz_pred[:,plotting_index],indices_validation),'go',alpha = 0.3)
 plt.xlabel('index number(proportional to time)')
 plt.ylabel('Z')
 plt.legend([redd,blued],['Z true','Z predicted'])
