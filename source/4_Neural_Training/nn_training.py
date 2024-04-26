@@ -91,9 +91,11 @@ Y1_xz = Y1_xz.to_numpy()
 # Grid Searching for best model parameters
 NL = [7]
 NPL = [5]
-LR = [0.01, 0.011,0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02]################
+LR = [0.01, 0.011,0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02]
 MI = [500]
-ALPH = [0.0001]#############
+ALPH = [0.0001]
+
+#This doesnt change, it works best no matter what
 LT = 'adaptive'
 
 nkfold = 5
@@ -176,12 +178,13 @@ idx_best = metrics_file['AIC'].idxmax()
 
 row_best = metrics_file[idx_best:(idx_best+1)]
 #%%
-#Manualy input because 'Scale' causes float/string incompatability
-#Current Optimum:
-#Nodes = 5
-#Layers = 8
-#Learn = 0.015
-#Iterations = 500
+
+#Current Optimum: (feel free to manualy tune or to explore the csv for alternatives)
+Nodes = row_best["#_Nodes"][0]
+Layers = row_best["#_Layers"][0]
+Learn = row_best["Learning_Rate"][0]
+Iterations = row_best["Max_reuse"][0]
+alph = row_best["L2_Penalty"][0]
 LT = 'adaptive'
 myr = 10
 optcoeff =  []
@@ -189,10 +192,6 @@ optint = []
 prevr2 = [0,0]
 for i in range(myr):
     print(i)
-    Layers = 7
-    Nodes = 5
-    Learn = 0.017
-    Iterations = 500
     RNN1 = MLPRegressor(hidden_layer_sizes=(Nodes,)*Layers,
                         max_iter=Iterations,
                         learning_rate_init=0.01,
@@ -201,17 +200,6 @@ for i in range(myr):
     RNN1.fit(X1_train,Y1_xz_train)
     Y1_xz_pred = RNN1.predict(X1_test)
     #Y1_xz_pred_all = RNN1.predict(X1)
-    
-#    validation_file = pd.DataFrame(columns = ['Gamma','Epsilon','Penalty',
-#                                           'R^2',
-#                                           'AIC2',
-#                                           '#_Support_Vectors',
-#                                           'Explained_Variance',
-#                                           'Maximum_Error',
-#                                           'Mean_Absolute_Error',
-#                                           'Mean_Squared_Error',
-#                                           'Median_Absolute_Error',
-#                                           'SupportV/Training_Ratio'])
     
     
     r2 = [met.r2_score(Y1_xz_test[:,0],Y1_xz_pred[:,0]),
