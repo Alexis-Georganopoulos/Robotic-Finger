@@ -17,9 +17,8 @@ import math
 
 #Necessary sci kit learn packages for Machine learning programming
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
-%matplotlib qt
+
 from sklearn.neural_network import MLPRegressor
 
 #Metrics for quality verification and data normalilsation
@@ -28,7 +27,8 @@ from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split,KFold
 from statistics import mean, stdev
 
-
+#convenient progress bar 
+from tqdm import tqdm
 
 
 #%%
@@ -53,7 +53,6 @@ del Y1
 #NUMPY --> PANDAS FRAME
 
 Y1_xz = pd.DataFrame({'x direction' : Y1_x[:],'z direction':Y1_z[:]})
-#Y1_y = pd.DataFrame({'y direction' : Y1_y[:]})
 
 X1 = pd.DataFrame({'electrode 1':X1[:,0],'electrode 2':X1[:,1],
                    'electrode 3':X1[:,2],'electrode 4':X1[:,3],
@@ -86,38 +85,18 @@ X1_test = X1_test.to_numpy()
 X1 = X1.to_numpy()
 Y1_xz = Y1_xz.to_numpy()
 
-#Y1_y_train,Y1_y_test =train_test_split(Y1_y, test_size =0.3, random_state =42)
-#Y1_y_train = np.ravel(Y1_y_train)
-#Y1_y_test = np.ravel(Y1_y_test)
 
-
-#Y1_z_train,Y1_z_test =train_test_split(Y1_z, test_size =0.25, random_state =42)
-#Y1_z_train = np.ravel(Y1_z_train)
-#Y1_z_test = np.ravel(Y1_z_test)
-
-#sc_x = StandardScaler(with_std = False) #We only center the inputs
-#X1_train = sc_x.fit_transform(X1_train)
-#X1_test = sc_x.transform(X1_test)
-
-#sc_y = StandardScaler()
-#Y1_x_train = sc_y.fit_transform(Y1_x_train)
-#Y1_x_test = sc_y.transform(Y1_x_test)
-#Y1_x_train = np.ravel(Y1_x_train)
-#Y1_x_test = np.ravel(Y1_x_test)
-#del Y1_x
-#del Y1_z
-#del X1
 
 #%%
 # Grid Searching for best model parameters
 NL = [7]
 NPL = [5]
-LR = [0.01,0.011,0.012,0.013,0.014,0.015,0.016,0.017,0.018,0.019,0.02]################
+#LR = [0.01, 0.011,0.012, 0.013, 0.014, 0.015, 0.016, 0.017, 0.018, 0.019, 0.02]################
+LR = [0.01, 0.02]
 MI = [500]
 ALPH = [0.0001]#############
 LT = 'adaptive'
 
-total_perm = len(NL)*len(NPL)*len(LR)*len(MI)*len(ALPH)
 nkfold = 5
 kf = KFold(n_splits = 5,shuffle=False)
 kf.get_n_splits(X1_train)
@@ -127,13 +106,15 @@ metrics_file = pd.DataFrame(columns = ['#_Layers','#_Nodes','Learning_Rate',
                                        'AIC', 'sigma_AIC',
                                        'Explained_Variance', 'sigma_Explained_Variance',
                                        'Mean_Squared_Error', 'sigma_Mean_Squared_Error'])
-running_total = 1
+
+total_perm = len(NL)*len(NPL)*len(LR)*len(MI)*len(ALPH)*nkfold
+pbar = tqdm(total = total_perm, desc="Grid Coverage", ncols = 100, leave=False)
+
 for Layers in NL:
     for Nodes in NPL:
         for Learn in LR:
             for Maxuse in MI:
-                for L2Penalty in ALPH:
-                    
+                for L2Penalty in ALPH: 
                     R2 = []
                     AIC = []
                     EV = []
@@ -146,7 +127,7 @@ for Layers in NL:
                                         learning_rate_init=Learn,
                                         alpha = L2Penalty,
                                         learning_rate = LT)
-                    print('Now testing Layers = {},\nNodes = {},\nLearn = {},\nMaxuse = {},\nL2Penalty = {}'.format(Layers,Nodes,Learn,Maxuse,L2Penalty))
+                   # print('Now testing Layers = {},\nNodes = {},\nLearn = {},\nMaxuse = {},\nL2Penalty = {}'.format(Layers,Nodes,Learn,Maxuse,L2Penalty))
                     for train_index,test_index in kf.split(X1_train):
                         
                         x_train = X1_train[train_index,:]
@@ -170,9 +151,9 @@ for Layers in NL:
                         
                         AIC2 =  2*(Layers*(Nodes**2+Nodes) - math.log(1-r2)) 
                         AIC.append(AIC2)
-                        
-                    print('{}% Done'.format(round(running_total/total_perm*100,2)))
-                    print(' ')
+                        pbar.update(1)
+                    #print('{}% Done'.format(round(running_total/total_perm*100,2)))
+                    #print(' ')
                     ##%%
                     #METRIC EVALUATION
                     metrics_row =           {'#_Layers':Layers,
@@ -189,12 +170,7 @@ for Layers in NL:
                                          'Mean_Squared_Error':mean(MSE),
                                          'sigma_Mean_Squared_Error':stdev(MSE)}
                     metrics_file.loc[len(metrics_file)] = metrics_row
-    
-                  
-                    running_total = running_total + 1
-
-#metrics_file.to_csv("XY1_x.csv")
-#print('Metrics Saved')
+pbar.close()
 #%%FINAL VALIDATION
 metrics_file.to_csv(os.path.join(current_dir, "hyperparameter_grid_search_overview.csv"))
 idx_best = metrics_file['AIC'].idxmax()
@@ -352,4 +328,7 @@ Z = finger_to_grid(X1_test[0,:])
 
 surf = ax.plot_surface(FV, FH, Z, cmap=cm.coolwarm,
                        linewidth=0, antialiased=False)
+
+
+
 
