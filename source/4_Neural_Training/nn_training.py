@@ -23,7 +23,6 @@ from sklearn.neural_network import MLPRegressor
 
 #Metrics for quality verification and data normalilsation
 import sklearn.metrics as met
-from sklearn.preprocessing import StandardScaler
 from sklearn.model_selection import train_test_split,KFold
 from statistics import mean, stdev
 
@@ -40,50 +39,49 @@ Y1 = np.transpose(extract(os.path.join(current_dir, "Y1.txt")))
 X2 = np.transpose(extract(os.path.join(current_dir, "X2.txt")))
 Y2 = np.transpose(extract(os.path.join(current_dir, "Y2.txt")))
 
-X1 = np.concatenate((X1,X2),axis = 0)
-Y1 = np.concatenate((Y1,Y2),axis = 0)
+X = np.concatenate((X1,X2),axis = 0)
+Y = np.concatenate((Y1,Y2),axis = 0)
 
-Y1_x = Y1[:,0]
-#Y1_y = Y1[:,1]
-Y1_z = Y1[:,2]
+Y_x = Y[:,0]
+Y_z = Y[:,2]
 
-del Y1
+del Y
 
 #%%
 #NUMPY --> PANDAS FRAME
 
-Y1_xz = pd.DataFrame({'x direction' : Y1_x[:],'z direction':Y1_z[:]})
+Y_xz = pd.DataFrame({'x direction' : Y_x[:],'z direction':Y_z[:]})
 
-X1 = pd.DataFrame({'electrode 1':X1[:,0],'electrode 2':X1[:,1],
-                   'electrode 3':X1[:,2],'electrode 4':X1[:,3],
-                   'electrode 5':X1[:,4],'electrode 6':X1[:,5],
-                   'electrode 7':X1[:,6],'electrode 8':X1[:,7],
-                   'electrode 9':X1[:,8],'electrode 10':X1[:,9],
-                   'electrode 11':X1[:,10],'electrode 12':X1[:,11],
-                   'electrode 13':X1[:,12],'electrode 14':X1[:,13],
-                   'electrode 15':X1[:,14],'electrode 16':X1[:,15],
-                   'electrode 17':X1[:,16],'electrode 18':X1[:,17],
-                   'electrode 19':X1[:,18]})
-del Y1_x
-del Y1_z
+X = pd.DataFrame({'electrode 1':X[:,0],'electrode 2':X[:,1],
+                   'electrode 3':X[:,2],'electrode 4':X[:,3],
+                   'electrode 5':X[:,4],'electrode 6':X[:,5],
+                   'electrode 7':X[:,6],'electrode 8':X[:,7],
+                   'electrode 9':X[:,8],'electrode 10':X[:,9],
+                   'electrode 11':X[:,10],'electrode 12':X[:,11],
+                   'electrode 13':X[:,12],'electrode 14':X[:,13],
+                   'electrode 15':X[:,14],'electrode 16':X[:,15],
+                   'electrode 17':X[:,16],'electrode 18':X[:,17],
+                   'electrode 19':X[:,18]})
+del Y_x
+del Y_z
 
 #%%
 #SPLITTING & SCALING
 
 #We will use the x and z directions for learning (y is deducable from x and z)
-indices = np.array(range(len(Y1_xz)))
-X1_train, X1_validation, Y1_xz_train, Y1_xz_validation,indices_train,indices_validation = train_test_split(X1,Y1_xz,indices,
+indices = np.array(range(len(Y_xz)))
+X_train, X_validation, Y_xz_train, Y_xz_validation,indices_train,indices_validation = train_test_split(X,Y_xz,indices,
                                               test_size = 0.5,
                                               random_state = 42,
                                               shuffle = False)
-Y1_xz_train = Y1_xz_train.to_numpy()
-Y1_xz_validation = Y1_xz_validation.to_numpy()
+Y_xz_train = Y_xz_train.to_numpy()
+Y_xz_validation = Y_xz_validation.to_numpy()
 
-X1_train = X1_train.to_numpy()
-X1_validation = X1_validation.to_numpy()
+X_train = X_train.to_numpy()
+X_validation = X_validation.to_numpy()
 
-X1 = X1.to_numpy()
-Y1_xz = Y1_xz.to_numpy()
+X = X.to_numpy()
+Y_xz = Y_xz.to_numpy()
 
 
 
@@ -102,7 +100,7 @@ LT = 'adaptive'
 
 nkfold = 5
 kf = KFold(n_splits = 5,shuffle=False)
-kf.get_n_splits(X1_train)
+kf.get_n_splits(X_train)
 metrics_file = pd.DataFrame(columns = ['#_Layers','#_Nodes','Learning_Rate',
                                        'Max_reuse', 'L2_Penalty',
                                        'R^2','sigma_R^2',
@@ -131,14 +129,14 @@ for Layers in NL:
                                         alpha = L2Penalty,
                                         learning_rate = LT)
                    # print('Now testing Layers = {},\nNodes = {},\nLearn = {},\nMaxuse = {},\nL2Penalty = {}'.format(Layers,Nodes,Learn,Maxuse,L2Penalty))
-                    for train_index,test_index in kf.split(X1_train):
+                    for train_index,test_index in kf.split(X_train):
                         
-                        x_train = X1_train[train_index,:]
-                        x_test =  X1_train[test_index,:]
-                        y_train = Y1_xz_train[train_index,:]
-                        y_test =  Y1_xz_train[test_index,:]
+                        x_train = X_train[train_index,:]
+                        x_test =  X_train[test_index,:]
+                        y_train = Y_xz_train[train_index,:]
+                        y_test =  Y_xz_train[test_index,:]
                         
-                        RNN1.fit(X1_train,Y1_xz_train)
+                        RNN1.fit(X_train,Y_xz_train)
                         
                         y_pred = RNN1.predict(x_test)
                         
@@ -176,38 +174,41 @@ for Layers in NL:
 pbar.close()
 #%%FINAL VALIDATION
 metrics_file.to_csv(os.path.join(current_dir, "hyperparameter_grid_search_overview.csv"))
-idx_best = metrics_file['AIC'].idxmax()
+idx_best = metrics_file['AIC'].idxmax()# change to idxmin when the number of layers/neurons per layer varies in the grid
 
 row_best = metrics_file[idx_best:(idx_best+1)]
 #%%
 
 #Current Optimum: (feel free to manualy tune or to explore the csv for alternatives)
-Nodes = row_best["#_Nodes"][0]
-Layers = row_best["#_Layers"][0]
-Learn = row_best["Learning_Rate"][0]
-Iterations = row_best["Max_reuse"][0]
-alph = row_best["L2_Penalty"][0]
+Nodes = row_best["#_Nodes"].to_numpy()[0]
+Layers = row_best["#_Layers"].to_numpy()[0]
+Learn = row_best["Learning_Rate"].to_numpy()[0]
+Iterations = row_best["Max_reuse"].to_numpy()[0]
+alph = row_best["L2_Penalty"].to_numpy()[0]
 LT = 'adaptive'
 
 optcoeff =  []
 optint = []
 prevr2 = [0,0]
 
-myr = 10
-pbar = tqdm(total = myr, desc="Grid Coverage", ncols = 100, leave=False)
+myr = 50
+pbar = tqdm(total = myr, desc="Weight Finder", ncols = 100, leave=False)
 for i in range(myr):
     RNN1 = MLPRegressor(hidden_layer_sizes=(Nodes,)*Layers,
                         max_iter=Iterations,
                         learning_rate_init=0.01,
                         alpha = 0.0001,
                         learning_rate = LT)
-    RNN1.fit(X1_train,Y1_xz_train)
-    Y1_xz_pred = RNN1.predict(X1_validation)
-    #Y1_xz_pred_all = RNN1.predict(X1)
+    
+    X_train, X_validation, Y_xz_train, Y_xz_validation,indices_train,indices_validation = train_test_split(X,Y_xz,indices,
+                                                  test_size = 0.8)
+    RNN1.fit(X_train,Y_xz_train)
+    Y_xz_pred = RNN1.predict(X_validation)
+    #Y_xz_pred_all = RNN1.predict(X)
     
     
-    r2 = [met.r2_score(Y1_xz_validation[:,0],Y1_xz_pred[:,0]),
-          met.r2_score(Y1_xz_validation[:,1],Y1_xz_pred[:,1])]
+    r2 = [met.r2_score(Y_xz_validation[:,0],Y_xz_pred[:,0]),
+          met.r2_score(Y_xz_validation[:,1],Y_xz_pred[:,1])]
     if((r2[0] + r2[1])/2 > (prevr2[0] +  prevr2[1])/2):
         optcoeff = RNN1.coefs_
         optint = RNN1.intercepts_
@@ -224,15 +225,15 @@ print(prevr2)
 
 RNN1.coefs_ = optcoeff
 RNN1.intercepts_ = optint
-Y1_xz_pred = RNN1.predict(X1_validation[0,0:])
-Y1_xz_pred_all = RNN1.predict(X1)
+Y_xz_pred = RNN1.predict(X_validation[0,0:])
+Y_xz_pred_all = RNN1.predict(X)
 
 #%%            
-#exvar = met.explained_variance_score(Y1_xz_validation,Y1_xz_pred)
-#maxerr = met.max_error(Y1_x_ztest,Y1_xz_pred)
-#meanabserr = met.mean_absolute_error(Y1_xz_validation,Y1_xz_pred)
-#meansqerr = met.mean_squared_error(Y1_xz_validation,Y1_xz_pred)
-#medianabserr = met.median_absolute_error(Y1_xz_validation,Y1_xz_pred)
+#exvar = met.explained_variance_score(Y_xz_validation,Y_xz_pred)
+#maxerr = met.max_error(Y_x_ztest,Y_xz_pred)
+#meanabserr = met.mean_absolute_error(Y_xz_validation,Y_xz_pred)
+#meansqerr = met.mean_squared_error(Y_xz_validation,Y_xz_pred)
+#medianabserr = met.median_absolute_error(Y_xz_validation,Y_xz_pred)
 ##AIC2 = -100*math.log(abs(r2)) + nsuppvec/50*19#-2*math.log10(r2)+nsuppvec*19
 #
 #validation_file = validation_file.append({'Gamma':Optimal_Gamma,'Epsilon':Optimal_Epsilon,'Penalty':Optimal_Penalty,
@@ -251,7 +252,7 @@ plt.figure(figsize = [16,8])
 plt.subplot(221)
 plt.title('Z Training data over index(time)')
 redd, = plt.plot(unshuffle(indices_train,indices_train),
-                 unshuffle(Y1_xz_train[:,plotting_index],indices_train),'ro')
+                 unshuffle(Y_xz_train[:,plotting_index],indices_train),'ro')
 plt.xlabel('index number(proportional to time)')
 plt.ylabel('Z')
 plt.legend([redd],['Z training data'])
@@ -263,7 +264,7 @@ temp_x = [np.arange(-1.0, 0.3, 0.1),np.arange(0.3, 1.2, 0.1)]
 plt.subplot(222)
 plt.title('Phase plot of Z true against Z predicted')
 #plt.title('Gam = {}, Eps = {}, C = {}'.format(Optimal_Gamma,Optimal_Epsilon,Optimal_Penalty))
-y_ts_y_p, = plt.plot(Y1_xz_validation[:,plotting_index],Y1_xz_pred[:,plotting_index],'ro')
+y_ts_y_p, = plt.plot(Y_xz_validation[:,plotting_index],Y_xz_pred[:,plotting_index],'ro')
 yy, = plt.plot(temp_x[plotting_index],temp_x[plotting_index],'b--')
 plt.legend([y_ts_y_p,yy],['(Z true,Z pred)','Z true = Z pred'])
 plt.xlabel('Z true')
@@ -273,9 +274,9 @@ plt.tight_layout()
 plt.subplot(223)
 plt.title('Z True and Z predicted data over index(time), R^2 = 0.82')
 redd, = plt.plot(unshuffle(indices_validation,indices_validation),
-                 unshuffle(Y1_xz_validation[:,plotting_index],indices_validation),'ro')
+                 unshuffle(Y_xz_validation[:,plotting_index],indices_validation),'ro')
 blued, = plt.plot(unshuffle(indices_validation,indices_validation),
-                  unshuffle(Y1_xz_pred[:,plotting_index],indices_validation),'go',alpha = 0.3)
+                  unshuffle(Y_xz_pred[:,plotting_index],indices_validation),'go',alpha = 0.3)
 plt.xlabel('index number(proportional to time)')
 plt.ylabel('Z')
 plt.legend([redd,blued],['Z true','Z predicted'])
@@ -283,17 +284,85 @@ plt.tight_layout()
 
 plt.subplot(224)
 plt.title('Prediction of the entire dataset')
-redd, = plt.plot(Y1_xz[:,plotting_index],'r')
-blued, = plt.plot(Y1_xz_pred_all[:,plotting_index],'g',alpha = 0.7)
+redd, = plt.plot(Y_xz[:,plotting_index],'r')
+blued, = plt.plot(Y_xz_pred_all[:,plotting_index],'g',alpha = 0.7)
 plt.xlabel('index number(proportional to time)')
 plt.ylabel('Z')
 plt.legend([redd,blued],['Z true','Z predicted'])
 plt.tight_layout()
 
 
-#macroplot(X1_train,indices_train,suppvec)
+#macroplot(X_train,indices_train,suppvec)
+
+#%%
+import numpy as np
+import matplotlib.pyplot as plt
+from sklearn.neural_network import MLPRegressor
+from sklearn.datasets import make_regression
+from sklearn.metrics import mean_squared_error
+from sklearn.metrics import r2_score
+from sklearn.model_selection import train_test_split
+from tqdm import tqdm
+
+# Generate synthetic dataset
+X, y = make_regression(n_samples=1000, n_features=20, noise=10.0, random_state=42)
+X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5, random_state=42)
+
+# Initialize MLP regressor
+mlp = MLPRegressor(hidden_layer_sizes=(5, 5, 5), max_iter=1, warm_start=True, random_state=42)
+
+# Initialize lists to store training and validation loss
+train_loss = []
+val_loss = []
+train_r2 = []
+val_r2 = []
+
+# Train the MLP regressor in mini-batches and collect loss and R^2 values
+n_iterations = 250  # number of iterations to run
+batch_size = 32  # mini-batch size
 
 
+pbar = tqdm(total = n_iterations, desc="Epoch", ncols = 100, leave=False)
+for i in range(n_iterations):
+    # Training step
+    mlp.partial_fit(X_train, y_train)
+    
+    # Calculate training loss
+    train_loss.append(mean_squared_error(y_train, mlp.predict(X_train)))
+    # Calculate training R^2 score
+    train_r2.append(r2_score(y_train, mlp.predict(X_train)))
+    
+    # Calculate validation loss
+    val_loss.append(mean_squared_error(y_val, mlp.predict(X_val)))
+    # Calculate validation R^2 score
+    val_r2.append(r2_score(y_val, mlp.predict(X_val)))
+    
+    pbar.update(1)
+
+pbar.close()
+
+# Plot the loss and R^2 curves
+plt.figure(figsize=(12, 6))
+
+plt.subplot(1, 2, 1)
+plt.plot(range(1, n_iterations + 1), train_loss, label="Training Loss", color="blue")
+plt.plot(range(1, n_iterations + 1), val_loss, label="Validation Loss", color="red")
+plt.title("Training and Validation Loss Curves")
+plt.xlabel("Number of Iterations")
+plt.ylabel("Loss")
+plt.legend()
+plt.grid()
+
+plt.subplot(1, 2, 2)
+plt.plot(range(1, n_iterations + 1), train_r2, label="Training R^2", color="blue")
+plt.plot(range(1, n_iterations + 1), val_r2, label="Validation R^2", color="red")
+plt.title("Training and Validation R^2 Curves")
+plt.xlabel("Number of Iterations")
+plt.ylabel("R^2 Score")
+plt.legend()
+
+plt.tight_layout()
+plt.show()
 
 
 
