@@ -281,7 +281,7 @@ plt.grid()
 plt.subplot(1, 2, 2)
 plt.plot(range(1, n_epochs + 1), opttrain_r2, label="Training $R^2$", color="blue")
 plt.plot(range(1, n_epochs+ 1), opttest_r2, label="Test $R^2$", color="red")
-plt.plot(n_epochs, np.mean(r2_validation), 'go', label = "Final Validation $R^2$")
+plt.plot(n_epochs, np.mean(r2_validation), 'gx', label = "Final Validation $R^2$")
 plt.title("Training and Validation $R^2$ Curves")
 plt.xlabel("Epochs")
 plt.ylabel("$R^2$ Score")
@@ -291,7 +291,15 @@ plt.grid()
 plt.tight_layout()
 plt.show()
 
+#%%  Save the Weights
+weights_dir = os.path.join(os.path.dirname(current_dir), "5_Final_Weights")
 
+for i,weight in enumerate(optcoeff):
+    np.savetxt(os.path.join(weights_dir, "coeff"+str(i)+".csv"), weight, delimiter = ',')
+    
+for i, bias in enumerate(optint):
+    np.savetxt(os.path.join(weights_dir, "bias"+str(i)+".csv"), weight, delimiter = ',')
+    
 #%%            
 #exvar = met.explained_variance_score(Y_xz_validation,Y_xz_pred)
 #maxerr = met.max_error(Y_x_ztest,Y_xz_pred)
