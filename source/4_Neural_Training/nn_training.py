@@ -189,10 +189,15 @@ LT = 'adaptive'
 
 optcoeff =  []
 optint = []
-prevr2 = [0,0]
+optr2 = [0,0]
+opttrain_loss = []
+opttest_loss = []
+opttrain_r2 = []
+opttest_r2 = []
 
-myr = 50
-pbar = tqdm(total = myr, desc="Weight Finder", ncols = 100, leave=False)
+myr = 10
+n_epochs = 50
+pbar = tqdm(total = myr*n_epochs, desc="Weight Finder", ncols = 100, leave=False)
 for i in range(myr):
     RNN1 = MLPRegressor(hidden_layer_sizes=(Nodes,)*Layers,
                         max_iter=Iterations,
@@ -200,33 +205,92 @@ for i in range(myr):
                         alpha = 0.0001,
                         learning_rate = LT)
     
-    X_train, X_validation, Y_xz_train, Y_xz_validation,indices_train,indices_validation = train_test_split(X,Y_xz,indices,
-                                                  test_size = 0.8)
-    RNN1.fit(X_train,Y_xz_train)
-    Y_xz_pred = RNN1.predict(X_validation)
+    X_train_refine, X_test, Y_xz_train_refine, Y_xz_test = train_test_split(X_train,Y_xz_train, train_size = 0.5)
+    
+    train_loss = []
+    test_loss = []
+    train_r2 = []
+    test_r2 = []
+    
+    for i in range(n_epochs):
+        
+        RNN1.partial_fit(X_train_refine, Y_xz_train_refine)
+        
+        train_loss.append(met.mean_squared_error(Y_xz_train_refine, RNN1.predict(X_train_refine)))
+        test_loss.append(met.mean_squared_error(Y_xz_test, RNN1.predict(X_test)))
+        
+        train_r2.append(met.r2_score(Y_xz_train_refine, RNN1.predict(X_train_refine)))
+        test_r2.append(met.r2_score(Y_xz_test, RNN1.predict(X_test)))
+        
+        pbar.update(1)
+        
+    #RNN1.fit(X_train_refine,Y_xz_train_refine)
+    Y_xz_pred = RNN1.predict(X_test)
     #Y_xz_pred_all = RNN1.predict(X)
     
     
-    r2 = [met.r2_score(Y_xz_validation[:,0],Y_xz_pred[:,0]),
-          met.r2_score(Y_xz_validation[:,1],Y_xz_pred[:,1])]
-    if((r2[0] + r2[1])/2 > (prevr2[0] +  prevr2[1])/2):
+    r2 = [met.r2_score(Y_xz_test[:,0],Y_xz_pred[:,0]),
+          met.r2_score(Y_xz_test[:,1],Y_xz_pred[:,1])]
+    
+    if((r2[0] + r2[1])/2 > (optr2[0] +  optr2[1])/2):
+        
         optcoeff = RNN1.coefs_
         optint = RNN1.intercepts_
-        prevr2 = r2
-    
-    pbar.update(1)
-    # print(r2)
-    # print(prevr2)   
+        
+        opttrain_loss = train_loss
+        opttest_loss = test_loss
+        opttrain_r2 = train_r2
+        opttest_r2 = test_r2
+        
+        optr2 = r2
+        
+          
 
 pbar.close()
 print('')
-print(prevr2)
-#%%
+print(optr2)
 
+ #%%
 RNN1.coefs_ = optcoeff
 RNN1.intercepts_ = optint
-Y_xz_pred = RNN1.predict(X_validation[0,0:])
+Y_xz_pred = RNN1.predict(X_validation)
+r2_validation = [met.r2_score(Y_xz_validation[:,0],Y_xz_pred[:,0]),
+                 met.r2_score(Y_xz_validation[:,1],Y_xz_pred[:,1])]
+
+
+print('')
+print(r2_validation)
+
+Y_xz_pred = RNN1.predict(X_validation)
 Y_xz_pred_all = RNN1.predict(X)
+
+
+#%%
+# Plot the loss and R^2 curves
+plt.figure(figsize=(12, 6))
+
+plt.subplot(1, 2, 1)
+plt.plot(range(1, n_epochs + 1), opttrain_loss, label="Training Loss", color="blue")
+plt.plot(range(1, n_epochs+ 1), opttest_loss, label="Test Loss", color="red")
+plt.title("Training and Validation Loss Curves")
+plt.xlabel("Epochs")
+plt.ylabel("Loss (Mean Squared Error)")
+plt.legend()
+plt.grid()
+
+plt.subplot(1, 2, 2)
+plt.plot(range(1, n_epochs + 1), opttrain_r2, label="Training $R^2$", color="blue")
+plt.plot(range(1, n_epochs+ 1), opttest_r2, label="Test $R^2$", color="red")
+plt.plot(n_epochs, np.mean(r2_validation), 'go', label = "Final Validation $R^2$")
+plt.title("Training and Validation $R^2$ Curves")
+plt.xlabel("Epochs")
+plt.ylabel("$R^2$ Score")
+plt.legend()
+plt.grid()
+
+plt.tight_layout()
+plt.show()
+
 
 #%%            
 #exvar = met.explained_variance_score(Y_xz_validation,Y_xz_pred)
@@ -294,75 +358,7 @@ plt.tight_layout()
 
 #macroplot(X_train,indices_train,suppvec)
 
-#%%
-import numpy as np
-import matplotlib.pyplot as plt
-from sklearn.neural_network import MLPRegressor
-from sklearn.datasets import make_regression
-from sklearn.metrics import mean_squared_error
-from sklearn.metrics import r2_score
-from sklearn.model_selection import train_test_split
-from tqdm import tqdm
 
-# Generate synthetic dataset
-X, y = make_regression(n_samples=1000, n_features=20, noise=10.0, random_state=42)
-X_train, X_val, y_train, y_val = train_test_split(X, y, test_size=0.5, random_state=42)
-
-# Initialize MLP regressor
-mlp = MLPRegressor(hidden_layer_sizes=(5, 5, 5), max_iter=1, warm_start=True, random_state=42)
-
-# Initialize lists to store training and validation loss
-train_loss = []
-val_loss = []
-train_r2 = []
-val_r2 = []
-
-# Train the MLP regressor in mini-batches and collect loss and R^2 values
-n_iterations = 250  # number of iterations to run
-batch_size = 32  # mini-batch size
-
-
-pbar = tqdm(total = n_iterations, desc="Epoch", ncols = 100, leave=False)
-for i in range(n_iterations):
-    # Training step
-    mlp.partial_fit(X_train, y_train)
-    
-    # Calculate training loss
-    train_loss.append(mean_squared_error(y_train, mlp.predict(X_train)))
-    # Calculate training R^2 score
-    train_r2.append(r2_score(y_train, mlp.predict(X_train)))
-    
-    # Calculate validation loss
-    val_loss.append(mean_squared_error(y_val, mlp.predict(X_val)))
-    # Calculate validation R^2 score
-    val_r2.append(r2_score(y_val, mlp.predict(X_val)))
-    
-    pbar.update(1)
-
-pbar.close()
-
-# Plot the loss and R^2 curves
-plt.figure(figsize=(12, 6))
-
-plt.subplot(1, 2, 1)
-plt.plot(range(1, n_iterations + 1), train_loss, label="Training Loss", color="blue")
-plt.plot(range(1, n_iterations + 1), val_loss, label="Validation Loss", color="red")
-plt.title("Training and Validation Loss Curves")
-plt.xlabel("Number of Iterations")
-plt.ylabel("Loss")
-plt.legend()
-plt.grid()
-
-plt.subplot(1, 2, 2)
-plt.plot(range(1, n_iterations + 1), train_r2, label="Training R^2", color="blue")
-plt.plot(range(1, n_iterations + 1), val_r2, label="Validation R^2", color="red")
-plt.title("Training and Validation R^2 Curves")
-plt.xlabel("Number of Iterations")
-plt.ylabel("R^2 Score")
-plt.legend()
-
-plt.tight_layout()
-plt.show()
 
 
 
