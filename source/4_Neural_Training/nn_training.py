@@ -250,7 +250,7 @@ pbar.close()
 print('')
 print(optr2)
 
- #%%
+ #%% Peeking at the validation set performance
 RNN1.coefs_ = optcoeff
 RNN1.intercepts_ = optint
 Y_xz_pred = RNN1.predict(X_validation)
@@ -265,8 +265,8 @@ Y_xz_pred = RNN1.predict(X_validation)
 Y_xz_pred_all = RNN1.predict(X)
 
 
-#%%
-# Plot the loss and R^2 curves
+#%% Plot the loss and R^2 curves
+
 plt.figure(figsize=(12, 6))
 
 plt.subplot(1, 2, 1)
@@ -292,19 +292,30 @@ plt.tight_layout()
 plt.show()
 
 #%%  Save the Weights
-# Commented out for safety purposes
+# IF STATEMENTS FOR SAFETY PURPOSES
 # Make sure you're happy with the performance before saving, otherwise use my 
-# default weights in the Final_NN folder
+# default weights in the Final_NN folder(the already saved ones in 
+# 5_Final_Weights also work, but are marginally less optimal)
 
-# weights_dir = os.path.join(os.path.dirname(current_dir), "5_Final_Weights")
+answer = input("Are you sure you want to overwrite the saved weights? y/n\n(type n if unsure)  ")
 
-# for i,weight in enumerate(optcoeff):
-#     np.savetxt(os.path.join(weights_dir, "coeff"+str(i)+".csv"), weight, delimiter = ',')
+if answer == 'y' or answer == 'Y' or answer == 'yes' or answer == 'YES':
     
-# for i, bias in enumerate(optint):
-#     np.savetxt(os.path.join(weights_dir, "bias"+str(i)+".csv"), weight, delimiter = ',')
+    answer = input("This action is irreversible!!! Are you sure? y/n\n(type n if unsure) ")
     
-#%%            
+    if answer == 'y' or answer == 'Y' or answer == 'yes' or answer == 'YES':
+        
+        weights_dir = os.path.join(os.path.dirname(current_dir), "5_Final_Weights")
+        for i,weight in enumerate(optcoeff):
+            np.savetxt(os.path.join(weights_dir, "coeff"+str(i)+".csv"), weight, delimiter = ',')
+            
+        for i, bias in enumerate(optint):
+            np.savetxt(os.path.join(weights_dir, "bias"+str(i)+".csv"), weight, delimiter = ',')
+        print('')
+        print('New weights saved to:\n'+weights_dir)
+
+    
+#%%    Some more plotting: phase plot, time series prediction         
 
 
 plotting_index = 0
@@ -313,7 +324,7 @@ plt.subplot(221)
 plt.title('Z Training data over index(time)')
 redd, = plt.plot(unshuffle(indices_train,indices_train),
                  unshuffle(Y_xz_train[:,plotting_index],indices_train),'ro')
-plt.xlabel('index number(proportional to time)')
+plt.xlabel('index number(equivalent to time)')
 plt.ylabel('Z')
 plt.legend([redd],['Z training data'])
 plt.tight_layout()
@@ -331,12 +342,12 @@ plt.ylabel('Z predicted')
 plt.tight_layout()
 
 plt.subplot(223)
-plt.title('Z True and Z predicted data over index(time), R^2 = 0.82')
+plt.title('Z True and Z predicted data over index(time)')
 redd, = plt.plot(unshuffle(indices_validation,indices_validation),
                  unshuffle(Y_xz_validation[:,plotting_index],indices_validation),'ro')
 blued, = plt.plot(unshuffle(indices_validation,indices_validation),
                   unshuffle(Y_xz_pred[:,plotting_index],indices_validation),'go',alpha = 0.3)
-plt.xlabel('index number(proportional to time)')
+plt.xlabel('index number(equivalent to time)')
 plt.ylabel('Z')
 plt.legend([redd,blued],['Z true','Z predicted'])
 plt.tight_layout()
@@ -345,7 +356,7 @@ plt.subplot(224)
 plt.title('Prediction of the entire dataset')
 redd, = plt.plot(Y_xz[:,plotting_index],'r')
 blued, = plt.plot(Y_xz_pred_all[:,plotting_index],'g',alpha = 0.7)
-plt.xlabel('index number(proportional to time)')
+plt.xlabel('index number(equivalent to time)')
 plt.ylabel('Z')
 plt.legend([redd,blued],['Z true','Z predicted'])
 plt.tight_layout()
