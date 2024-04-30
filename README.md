@@ -10,8 +10,9 @@ The Syntouch Biotac is a robotic finger with multiple electrode and pressure sen
   - [Data Acquisition](#data-acquisition)
   - [Data processing](#data-processing)
   - [Machine Learning Approaches](#machine-learning-approaches)
-    - [SVR](#svr)
     - [Multi-Layered Perceptron(Neural Network)](#multi-layered-perceptronneural-network)
+    - [SVR (rejected)](#svr-rejected)
+    - [GPR (abandoned)](#gpr-abandoned)
   - [Run the code](#run-the-code)
 
 ### Data Acquisition
@@ -23,7 +24,8 @@ The Syntouch Biotac is a robotic finger with multiple electrode and pressure sen
 ### Machine Learning Approaches
 ---
 
-#### SVR
 #### Multi-Layered Perceptron(Neural Network)
+#### SVR (rejected)
+#### GPR (abandoned)
 
 ### Run the code
