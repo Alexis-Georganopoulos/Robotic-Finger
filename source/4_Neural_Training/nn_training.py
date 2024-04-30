@@ -293,6 +293,8 @@ plt.show()
 
 #%%  Save the Weights
 # Commented out for safety purposes
+# Make sure you're happy with the performance before saving, otherwise use my 
+# default weights in the Final_NN folder
 
 # weights_dir = os.path.join(os.path.dirname(current_dir), "5_Final_Weights")
 
