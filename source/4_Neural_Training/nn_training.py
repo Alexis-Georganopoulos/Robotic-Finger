@@ -172,7 +172,7 @@ for Layers in NL:
                                          'sigma_Mean_Squared_Error':stdev(MSE)}
                     metrics_file.loc[len(metrics_file)] = metrics_row
 pbar.close()
-#%%FINAL VALIDATION
+#%%Save and Extract Metrics
 metrics_file.to_csv(os.path.join(current_dir, "hyperparameter_grid_search_overview.csv"))
 idx_best = metrics_file['AIC'].idxmax()# change to idxmin when the number of layers/neurons per layer varies in the grid
 
@@ -292,32 +292,18 @@ plt.tight_layout()
 plt.show()
 
 #%%  Save the Weights
-weights_dir = os.path.join(os.path.dirname(current_dir), "5_Final_Weights")
+# Commented out for safety purposes
 
-for i,weight in enumerate(optcoeff):
-    np.savetxt(os.path.join(weights_dir, "coeff"+str(i)+".csv"), weight, delimiter = ',')
+# weights_dir = os.path.join(os.path.dirname(current_dir), "5_Final_Weights")
+
+# for i,weight in enumerate(optcoeff):
+#     np.savetxt(os.path.join(weights_dir, "coeff"+str(i)+".csv"), weight, delimiter = ',')
     
-for i, bias in enumerate(optint):
-    np.savetxt(os.path.join(weights_dir, "bias"+str(i)+".csv"), weight, delimiter = ',')
+# for i, bias in enumerate(optint):
+#     np.savetxt(os.path.join(weights_dir, "bias"+str(i)+".csv"), weight, delimiter = ',')
     
 #%%            
-#exvar = met.explained_variance_score(Y_xz_validation,Y_xz_pred)
-#maxerr = met.max_error(Y_x_ztest,Y_xz_pred)
-#meanabserr = met.mean_absolute_error(Y_xz_validation,Y_xz_pred)
-#meansqerr = met.mean_squared_error(Y_xz_validation,Y_xz_pred)
-#medianabserr = met.median_absolute_error(Y_xz_validation,Y_xz_pred)
-##AIC2 = -100*math.log(abs(r2)) + nsuppvec/50*19#-2*math.log10(r2)+nsuppvec*19
-#
-#validation_file = validation_file.append({'Gamma':Optimal_Gamma,'Epsilon':Optimal_Epsilon,'Penalty':Optimal_Penalty,
-#                     'R^2':r2,
-#                     'AIC2':AIC2,
-#                     'Explained_Variance':exvar,
-#                     'Maximum_Error':maxerr,
-#                     'Mean_Absolute_Error':meanabserr,
-#                     'Mean_Squared_Error':meansqerr,
-#                     'Median_Absolute_Error':medianabserr,
-#                     '#_Support_Vectors':nsuppvec,
-#                     'SupportV/Training_Ratio':suppvecrat},ignore_index = True)
+
 
 plotting_index = 0
 plt.figure(figsize = [16,8])
@@ -335,7 +321,6 @@ temp_x = [np.arange(-1.0, 0.3, 0.1),np.arange(0.3, 1.2, 0.1)]
 
 plt.subplot(222)
 plt.title('Phase plot of Z true against Z predicted')
-#plt.title('Gam = {}, Eps = {}, C = {}'.format(Optimal_Gamma,Optimal_Epsilon,Optimal_Penalty))
 y_ts_y_p, = plt.plot(Y_xz_validation[:,plotting_index],Y_xz_pred[:,plotting_index],'ro')
 yy, = plt.plot(temp_x[plotting_index],temp_x[plotting_index],'b--')
 plt.legend([y_ts_y_p,yy],['(Z true,Z pred)','Z true = Z pred'])
@@ -363,8 +348,6 @@ plt.ylabel('Z')
 plt.legend([redd,blued],['Z true','Z predicted'])
 plt.tight_layout()
 
-
-#macroplot(X_train,indices_train,suppvec)
 
 
 
