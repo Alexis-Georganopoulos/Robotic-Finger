@@ -1,6 +1,6 @@
 ## Syntouch Biotac Robotic Finger: Deducing Force Direction
 
-The Syntouch Biotac is a robotic finger with multiple electrode and pressure sensors that allow for tactile feedback. In this work, I created a neural network that takes in this sensor information and deduces the direction of a tactile force in real-time, mediated by ROS (ie, if the finger is touching something, it knows which direction the apparent force is coming from).<br>
+The Syntouch Biotac is a robotic finger with multiple electrode and pressure sensors that allow for tactile feedback. In this project, I created a neural network that takes in this sensor information and deduces the direction of a tactile force in real-time, mediated by ROS (ie, if the finger is touching something, it knows which direction the apparent force is coming from).<br>
 ![visual summary](imgs/gist_gif.gif)
 [Run the Code!](#run-the-code)
 
