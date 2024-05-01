@@ -162,9 +162,9 @@ for Layers in NL:
                                          'Learning_Rate':Learn,
                                          'Max_reuse':Maxuse,
                                          'L2_Penalty':L2Penalty,
-                                         'R^2':max(R2),
+                                         'R^2':max(R2),# or np.median(R2) for varying layers/neurons per layer
                                          'sigma_R^2':stdev(R2),
-                                         'AIC':max(AIC),
+                                         'AIC':max(AIC),# or np.median(R2) for varying layers/neurons per layer
                                          'sigma_AIC':stdev(AIC),
                                          'Explained_Variance':mean(EV),
                                          'sigma_Explained_Variance':stdev(EV),
