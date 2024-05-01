@@ -25,6 +25,7 @@ The Syntouch Biotac is a robotic finger with multiple electrode and pressure sen
 ---
 
 #### Multi-Layered Perceptron(Neural Network)
+![loss & R2 plots](imgs/loss_r2_plots.png)
 #### SVR (rejected)
 #### GPR (abandoned)
 
