@@ -37,7 +37,7 @@ The main metric used to determine the goodness of fit for regression was the coe
 #### Multi-Layered Perceptron(Neural Network)
 ![loss & R2 plots](imgs/loss_r2_plots.png)
 #### Support Vector Regression (SVR) - Rejected
-Since SVR was not the final implemented solution, the relevant code has been redacted in favour of the neural network. However, it's worth discussing the main insights and choices.<br>
+Since SVR was not the final implemented solution, the relevant code has been redacted in favour of the neural network. However, it's worth discussing the main insights, choices, and results.<br>
 Similar to the neural network, I grid-searched over the hyperparameters to find the best ones. After experimentation, an `RBF` kernel was used.<br>
 The follwing ranges were used:
 - $\epsilon \in [0.05, 0.2]$ Tolerance for noise
