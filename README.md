@@ -53,7 +53,8 @@ The `AIC` for SVR is not directly applicable, thus the use of cross-validation a
 Tuning $\alpha$ is down to experimentation, however it should favour model performance when $S_v \in [20, 30]$. <br>
 My $AIC_{psudeo}$ should **not** be used to compare the SVR models against the Neural Networks. In the latter case I used the appropriate formula for multi-layered perceptrons, but in the former case it's a guess/estimate of what it may look like. <br>
 Ultimately the best models after the gridsearch and cross-validation did not yield satisfactory results.
-![SVR performance plots](imgs/Capture.PNG.png)
+
+![SVR performance plots](imgs/svr_performance.png)
 
 We can see the $R^2$ is no where near satisfactory for a maximum of 30 support vectors. Ideally an $R^2 \gt 0.7$ would have merited further investigation. However for $R^2 = 0.68$ we need 51 support vectors in the x-direction, and 81 in the z-direction. Therefore and SVR model was rejected for this project.
 #### Gaussian Process Regression (GPR) - Abandoned
