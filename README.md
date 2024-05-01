@@ -11,6 +11,7 @@ The Syntouch Biotac is a robotic finger with multiple electrode and pressure sen
   - [Data Acquisition](#data-acquisition)
   - [Data processing](#data-processing)
   - [Machine Learning Approaches](#machine-learning-approaches)
+    - [Framework for all approaches](#framework-for-all-approaches)
     - [Multi-Layered Perceptron(Neural Network)](#multi-layered-perceptronneural-network)
     - [Support Vector Regression (SVR) - Rejected](#support-vector-regression-svr---rejected)
     - [Gaussian Process Regression (GPR) - Abandoned](#gaussian-process-regression-gpr---abandoned)
@@ -33,13 +34,24 @@ The Syntouch Biotac contains a variety of sensors, of interest are the
 ![data pipeline](imgs/data_processing.png)
 ### Machine Learning Approaches
 ---
-The main metric used to determine the goodness of fit for regression was the coefficient of determination, $R^2$. 
+#### Framework for all approaches
+The main metric used to determine the goodness of fit for regression was the coefficient of determination, $R^2$. The optimal model parameters were determined with a grid search. For a given gridpoint(a given permutation of hyperparameters), 5-fold cross validation was used to train and retrain a model, and extract the $R^2$ value for each fold in the 5-fold. The **median** $R^2$ value was chosen to represent the performance for that permutation of hyperparameters.<br>
+AIC was used as a way to discriminate against more complex models in a given gridsearch. <br>
+Given that the AIC criterion tends to favour performance at the expense of greater model complexity, this metric was only indicative for my experiments. I would look at the permutation of hyperparameters that minimised AIC and manually explored if better alternatives were being obscured. <br>
+Ultimately I wanted the simplest model with the highest performance, so relying on AIC alone is not sufficient. $R^2$ generally took precedence. The summary statistics & metrics for each point(model) in the gridsearch were saved in an csv file, and inspected when the gridsearch finished. An example file for the neural network is found [here](source/4_Neural_Training/hyperparameter_grid_search_overview.csv). The other included statistics are largely arbitrary, and were included "just because I could". They came with no computation cost and they may have given some insight. <br>
+Regression performance was important for this project(only models with $R>0.7$ were considered) so BIC was not considered as a discriminator.<br><br>
+Given the datasets are composed of two trials, I decided to have a shuffled train/test/validation split of 64%/16%/20%. Tha train/test set were used exclusively for the 5-fold cross validation, and once the best model was found, it was retrained on the same training set and finally tested against the validation set. Below we visualise this process:  
+
+![5-fold validation process](imgs/5_fold.png)
+
+While this was conducted to the neural network and the SVR gridsearch permutations, the search of a simpler model required I change this approach for the neural network to make sure I was avoiding researcher overfitting. This will be discussed later.
+
 #### Multi-Layered Perceptron(Neural Network)
 ![loss & R2 plots](imgs/loss_r2_plots.png)
 #### Support Vector Regression (SVR) - Rejected
 Since SVR was not the final implemented solution, the relevant code has been redacted in favour of the neural network. However, it's worth discussing the main insights, choices, and results.<br>
 Similar to the neural network, I grid-searched over the hyperparameters to find the best ones. After experimentation, an `RBF` kernel was used.<br>
-The follwing ranges were used:
+The following ranges were used:
 - $\epsilon \in [0.05, 0.2]$ Tolerance for noise
 - $C \in [1, 5000]$ Penalty for outliers
 - $\gamma \in [10^{-5}, 10^{-4}] \Leftrightarrow \sigma \in [70, 223]$ RBF kernel width
@@ -57,7 +69,7 @@ Ultimately the best models after the gridsearch and cross-validation did not yie
 
 ![SVR performance plots](imgs/svr_performance.png)
 
-We can see the $R^2$ is no where near satisfactory for a maximum of 30 support vectors. Ideally an $R^2 \gt 0.7$ would have merited further investigation. However for $R^2 = 0.68$ we need 51 support vectors in the x-direction, and 81 in the z-direction. Therefore and SVR model was rejected for this project.
+We can see the $R^2$ is no where near satisfactory for a maximum of 30 support vectors. Ideally an $R^2 \gt 0.7$ would have merited further investigation. However for $R^2 = 0.68$ we need 51 support vectors in the x-direction, and 81 in the z-direction. Therefore an SVR model was rejected for this project.
 #### Gaussian Process Regression (GPR) - Abandoned
 I also attempted Gaussian Process Regression as a way to compare it against the performance of the other models. It became very apparent very quickly that this wasn't the way to go. <br>
 The modelling was very sensitive to choices on the priors despite popular approaches. <br>
