@@ -17,6 +17,8 @@ The Syntouch Biotac is a robotic finger with multiple electrode and pressure sen
 
 ### Data Acquisition
 ---
+![tracker frame](imgs/Capture.PNG.png)
+![frame transform](imgs/frametransform.png)
 
 ### Data processing
 ---
