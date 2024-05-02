@@ -65,7 +65,7 @@ After examining the complete `cvs` [here](source/4_Neural_Training/hyperparamete
 ##### The Simplest, Most Elegant Solution
 Inspecting the `csv` file indicated that there may have been even simpler models that could model the data. Among the other statistics, the variance in $R^2$ was moderate for them, indicating there could be simpler models with good performance. <br>
 Thanks to the fact that now the gridsearch would be restricted to a smaller range, and to smaller models, it was computationally feasible to experiment more finely.<br>
-However, in the search for a simpler model, inevitably this invites the problem of researcher overfiting, ie: Is the model actually performing well on the validation set, or is it only performing well because I adjusted the parameters and/or trained/retrained to fit the data?<br><br>
+However, in the search for a simpler model, inevitably this invites the problem of researcher overfiting, ie: Is the model actually performing well on the validation set, or is it only performing well because I adjusted the parameters and/or trained/retrained to fit the data?<br>
 
 In order to select candidate models, I limited the grid to the following ranges:
 - $L \in [1,10]$
@@ -73,7 +73,7 @@ In order to select candidate models, I limited the grid to the following ranges:
 - $l \in [0.01, 0.02]$
 
 Furthermore, during cross-validation, I recorded the **best** $R^2$ score for a given model, rather than its **median**.<br>
-My reasoning is as follows: a good simpler model would perform well on the test/train/validation sets, whereas a simpler, overftted model would only perform well on the test/train sets, and poorly on the validation set. And since I had the computation power, I could filter out the overfitted models and keep the remainder as candidates.<br>
+My reasoning is as follows: a good simpler model would perform well on the test/train/validation sets, whereas a simpler, overfited model would only perform well on the test/train sets, and poorly on the validation set. And since I had the computation power, I could filter out the overfited models and keep the remainder as candidates.<br>
 After filtering them against the validation set, the best performing candidate had $L = 7, N = 5, l= 0.014$.<br>
 It important to note that the weights and biases were never saved during the search.
 
@@ -97,7 +97,7 @@ It would have been enough to stop at the model of 90 neurons, but curiosity got 
 
 ##### Closing Remarks
 One could argue that I could repeat the train/retrain loop in the simpler model until I eventually researcher overfited into good performance in the validation set. I also experimented with this. About 50% of the time it gives good results, and the other 50% it performs poorly on the validation set. I argue it is not overfiting on the good 50% since ultimately the model trained on only 25% of the dataset, and was validated against unrelated(different trial) data. <br>
-However it does demonstrate the inherent stochastic nature of neural networks. Even if I performed this same experiment with the 90 neuron model, perhaps it would validate well 95% of the time, but poorly on the 5%. Even though we know the 90 neurons is an objectively good model, at what point should we say it has become researcher overfit? When it only validates 70% of the time? 30% ? An interesting question, but for practical purposes, only the context can inform us. In this case, the Syntouch Biotac will never experience a positive z coordinate(the electrode sensors are only on one side of the finger), and all coordinates are constrained by their normalisation. Even if it was overfiting outside these ranges, there's no way to know as these ranges will never be achievable. In that case, overfiting does not matter. An interesting thing to think about. Perhaps its more useful to define overfitting as 'Not Underfiting' rather than just poor validation performance. 
+However it does demonstrate the inherent stochastic nature of neural networks. Even if I performed this same experiment with the 90 neuron model, perhaps it would validate well 95% of the time, but poorly on the 5%. Even though we know the 90 neurons is an objectively good model, at what point should we say it has become researcher overfit? When it only validates 70% of the time? 30% ? An interesting question, but for practical purposes, only the context can inform us. In this case, the Syntouch Biotac will never experience a positive z coordinate(the electrode sensors are only on one side of the finger), and all coordinates are constrained by their normalisation. Even if it was overfiting outside these ranges, there's no way to know as these ranges will never be achievable. In that case, overfiting does not matter. An interesting thing to think about. Perhaps its more useful to define overfiting as 'Not Underfiting' rather than just poor validation performance. 
 #### Support Vector Regression (SVR) - Rejected
 
 Since SVR was not the final implemented solution, the relevant code has been redacted in favour of the neural network. However, it's worth discussing the main insights, choices, and results.<br>
@@ -125,10 +125,11 @@ We can see the $R^2$ is no where near satisfactory for a maximum of 30 support v
 
 I also attempted Gaussian Process Regression as a way to compare it against the performance of the other models. It became very apparent very quickly that this wasn't the way to go. <br>
 The modelling was very sensitive to choices on the priors despite popular approaches. <br>
-To get it to work required tightly constraining priors, however this significantly increases the likelihood of researcher overfitting to get acceptable results. Rather than spending the computation time grid-searching for small islands of acceptable performance(which ultimately were very close to each other), this approach was abandoned. 
+To get it to work required tightly constraining priors, however this significantly increases the likelihood of researcher overfiting to get acceptable results. Rather than spending the computation time grid-searching for small islands of acceptable performance(which ultimately were very close to each other), this approach was abandoned. 
 
 ### Implemented Solution in ROS
 ---
+
 ### Thermal Noise & Unwanted spurious effects
 ---
 A known issue was thermal noise during the use of the finger. Once turned on, the changing internal temperature would vary the readings of the electrodes, and slightly change the viscosity of the internal mediating fluid (thus affecting the static pressure readings). If left unaccounted for, it would cause the predicted x,y,z coordinates of the normal force to drift.<br>
