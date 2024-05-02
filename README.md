@@ -49,7 +49,7 @@ Given the datasets are composed of two trials, I decided to have a shuffled trai
 
 ![5-fold validation process](imgs/5_fold.png)
 
-While this was conducted to the neural network and the SVR gridsearch permutations, the search of a simpler model required I change this approach for the neural network to make sure I was avoiding researcher over-fitting. This will be discussed later.
+While this was conducted to the neural network and the SVR gridsearch permutations, the search of a simpler model required I change this approach for the neural network to make sure I was avoiding researcher over-fitting. This is discussed [here](#the-simplest-most-elegant-solution).
 
 #### Multi-Layered Perceptron(Neural Network)
 
