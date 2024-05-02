@@ -131,4 +131,10 @@ To get it to work required tightly constraining priors, however this significant
 ---
 ### Thermal Noise & Unwanted spurious effects
 ---
+A known issue was thermal noise during the use of the finger. Once turned on, the changing internal temperature would vary the readings of the electrodes, and slightly change the viscosity of the internal mediating fluid (thus affecting the static pressure readings). If left unaccounted for, it would cause the predicted x,y,z coordinates of the normal force to drift.<br>
+So for example, if you pressed the finger perfectly in the middle in the perpendicular direction, the predicted normal force would gradually drift away as the finger warmed up.<br>
+To robustly deal with this requires a proper analysis and implementation of noise mitigation efforts. This was not in the scope of the project, so it was dealt with as follows:<br>
+After powering on the finger and connecting it to ROS(but before starting the neural network node), wait 20 minutes for it to warm up. It will be in thermal equilibrium with the environment. Then, start the neural network node and it will run the calibration process. Since the finger is already in thermal equilibrium, there will be no thermal drift.<br>
+This works very well when the finger is put in contact with thermally insulating materials, but I suspect it will begin to drift when pressed against thermally conducting materials. They will draw out the heat from the finger and lower the internal temperature, inducing a reversed drift.<br>
+This was never experimented upon further as it was outside the scope of the project. Letting the finger warm up and only using wood/plastic/etc.. surfaces was sufficient to nullify thermal drift for the interests of this project.
 ### Run the code
