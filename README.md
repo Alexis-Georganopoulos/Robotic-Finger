@@ -81,7 +81,7 @@ To put this final candidate to the test, the issue of researcher overfitting was
 1. Only data from trial 1 would be used for testing/training: While all trials used the same equipment, each trial was performed by different people under different conditions(room temperature, lighting, time, etc...). So to eliminate the possibility that the model was learning environmental queues, it has to perform comparably well on a different trial as it did from the one it learned from. This would confirm that it's actually picking up the underlying pattern for regression.
 2. A severe train/test ratio of 50%: Limiting the training data while maintaining good test performance indicates the model is correctly learning the underlying pattern.
 
-The net effect was that the candidate model used only 25% of the entire dataset for training, 25% for testing, and an unrelated trial(which it was never exposed to and was 50& of the entire dataset) for validation. This is visualised below:
+The net effect was that the candidate model used only 25% of the entire dataset for training, 25% for testing, and an unrelated trial(which it was never exposed to and was 50% of the entire dataset) for validation. This is visualised below:
 
 ![adjusted training](imgs/adjusted_grid.png)
 
