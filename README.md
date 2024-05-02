@@ -63,7 +63,7 @@ Where $l$ is the learning rate. A maximum of 500 epochs was allowed per training
 It does not consider the weights & biases of the input and output neurons. No matter which permutation of hyperparameters, the latter two will never vary, and they will never be directly connected to each-other.<br><br>
 After examining the complete `cvs` [here](source/4_Neural_Training/hyperparameter_grid_search_overview.csv) for the entire range of hyperparameters, a good model with an $R^2=0.91$ in the x direction and $R^2=0.88$ in z direction was found for only 90 neurons (10 layers, 9 nodes per layer, tested against the validation set). Normally the project would have ended here, but the `csv` invited for a closer inspection to even simpler models.
 ##### The Simplest, Most Elegant Solution
-Inspecting the `csv` file indicated that there may have been even simpler models that could model the data. Among the other statistics, the variance in `R^2` was moderate for them, indicating there could be simpler models with good performance. <br>
+Inspecting the `csv` file indicated that there may have been even simpler models that could model the data. Among the other statistics, the variance in $R^2$ was moderate for them, indicating there could be simpler models with good performance. <br>
 Thanks to the fact that now the gridsearch would be restricted to a smaller range, and to smaller models, it was computationally feasible to experiment more finely.<br>
 However, in the search for a simpler model, inevitably this invites the problem of researcher overfiting, ie: Is the model actually performing well on the validation set, or is it only performing well because I adjusted the parameters and/or trained/retrained to fit the data?<br><br>
 
