@@ -73,7 +73,7 @@ In order to select candidate models, I limited the grid to the following ranges:
 - $l \in [0.01, 0.02]$
 
 Furthermore, during cross-validation, I recorded the **best** $R^2$ score for a given model, rather than its **median**.<br>
-My reasoning is as follows: a good simpler model would perform well on the test/train/validation sets, whereas a simpler, overfitted model would only perform well on the test/train sets, and poorly on the validation set. And since I had the computation power, I could filter out the overfitted models and keep the remainder as candidates.<br>
+My reasoning is as follows: a good simpler model would perform well on the test/train/validation sets, whereas a simpler, overftted model would only perform well on the test/train sets, and poorly on the validation set. And since I had the computation power, I could filter out the overfitted models and keep the remainder as candidates.<br>
 After filtering them against the validation set, the best performing candidate had $L = 7, N = 5, l= 0.014$.<br>
 It important to note that the weights and biases were never saved during the search.
 
@@ -81,7 +81,7 @@ To put this final candidate to the test, the issue of researcher overfitting was
 1. Only data from trial 1 would be used for testing/training: While all trials used the same equipment, each trial was performed by different people under different conditions(room temperature, lighting, time, etc...). So to eliminate the possibility that the model was learning environmental queues, it has to perform comparably well on a different trial as it did from the one it learned from. This would confirm that it's actually picking up the underlying pattern for regression.
 2. A severe train/test ratio of 50%: Limiting the training data while maintaining good test performance indicates the model is correctly learning the underlying pattern.
 
-The net effect was that the candidate model used only 25% of the entire dataset for training, 25% for testing, and an unrelated trial(which it was never exposed to) for testing. This is visualised below:
+The net effect was that the candidate model used only 25% of the entire dataset for training, 25% for testing, and an unrelated trial(which it was never exposed to and was 50& of the entire dataset) for validation. This is visualised below:
 ![adjusted training](imgs/adjusted_grid.png)
 
 Since the weights were never saved during the gridsearch, the purpose of the retraining loop was to re-converge back to the good weights. It could be the case that the objectively good weights are few, and the overfitting ones are many, but we have the computation power to try. Luckily they did converge properly.<br>
