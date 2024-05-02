@@ -54,7 +54,7 @@ While this was conducted to the neural network and the SVR gridsearch permutatio
 #### Multi-Layered Perceptron(Neural Network)
 
 ##### The Original Solution
-The multi-layered perceptron had 19 input neurons, and 2 output neurons. The inputs are for a single data point from our X dataset, and the outputs are for the corresponding x and z coordinates, in the Y dataset. All layers in-between are conventional "square" layers, where there are L layers, and N nodes per layer. I used ReLu as the activation function across all neurons, except at the input and outputs(no activation function, just raw data) The hyerparameter search space is the following:
+The multi-layered perceptron had 19 input neurons, and 2 output neurons. The inputs are for a single data point from our X dataset, and the outputs are for the corresponding x and z coordinates, in the Y dataset. All layers in-between are conventional "square" layers, where there are L layers, and N nodes per layer, each layer fully connected to its previous and next layer. I used ReLu as the activation function across all neurons, except at the input and outputs(no activation function, just raw data) The hyerparameter search space is the following:
 - $L \in [1,10]$
 - $N \in [5,100]$
 - $l \in [0.0001, 0.05]$
