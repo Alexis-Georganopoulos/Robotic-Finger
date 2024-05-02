@@ -35,6 +35,7 @@ The Syntouch Biotac contains a variety of sensors, of interest are the
 
 ### Data processing
 ---
+After several trials of data acquisition, two were selected to be the dataset for machine learning purposes. These are [Trial 1](source/2_Raw_Data/biochip_listener_15330_1571242563995.log) and [Trial 2](source/2_Raw_Data/biochip_listener_15834_1571243162016.log). All other trials are found in the [Other_Raw_Unused](source/2_Raw_Data/Other_Raw_Unused/) folder. 
 ![data pipeline](imgs/data_processing.png)
 ### Machine Learning Approaches
 ---
