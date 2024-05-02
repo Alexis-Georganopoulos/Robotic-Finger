@@ -86,6 +86,7 @@ The net effect was that the candidate model used only 25% of the entire dataset 
 
 Since the weights were never saved during the gridsearch, the purpose of the retraining loop was to re-converge back to the good weights. It could be the case that the objectively good weights are few, and the overfitting ones are many, but we have the computation power to try. Luckily they did converge properly.<br>
 The final performance is demonstrated bellow with a final $R^2$ of 0.8 on the validation set(averaged out on the x and z directions).
+
 ![loss & R2 plots](imgs/loss_r2_plots.png)
 
 Similarly, the loss curve and $R^2$ curve also represent the x-z average.
