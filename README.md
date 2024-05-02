@@ -82,6 +82,7 @@ To put this final candidate to the test, the issue of researcher overfitting was
 2. A severe train/test ratio of 50%: Limiting the training data while maintaining good test performance indicates the model is correctly learning the underlying pattern.
 
 The net effect was that the candidate model used only 25% of the entire dataset for training, 25% for testing, and an unrelated trial(which it was never exposed to and was 50& of the entire dataset) for validation. This is visualised below:
+
 ![adjusted training](imgs/adjusted_grid.png)
 
 Since the weights were never saved during the gridsearch, the purpose of the retraining loop was to re-converge back to the good weights. It could be the case that the objectively good weights are few, and the overfitting ones are many, but we have the computation power to try. Luckily they did converge properly.<br>
