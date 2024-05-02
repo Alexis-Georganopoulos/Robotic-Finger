@@ -39,7 +39,7 @@ The Syntouch Biotac contains a variety of sensors, of interest are the
 ### Machine Learning Approaches
 ---
 #### Framework for all approaches
-All code relating to machine learning was done in the `SciKit-Learn` python package, except for GPR. This was done in MatLab using the `ML-toolbox` package, provided by EPFL.<br>
+All code relating to machine learning was done in the `SciKit-Learn` python package, except for GPR. This was done in MatLab using the `ML-toolbox` package.<br>
 The main metric used to determine the goodness of fit for regression was the coefficient of determination, $R^2$. I seek to minimise model complexity for a performance of at least $R^2 = 0.7$, but ideally it would be more. The optimal model parameters were determined with a grid search. For a given gridpoint(a given permutation of hyperparameters), 5-fold cross validation was used to train/retrain a model, and extract the $R^2$ value for each test-fold in the 5-fold. The **median** $R^2$ value was chosen to represent the performance for _that_ permutation of hyperparameters.<br>
 AIC was used as a way to discriminate against more complex models in a given gridsearch. <br>
 Given that the AIC criterion tends to favour performance at the expense of greater model complexity, this metric was only indicative for my experiments. I would look at the permutation of hyperparameters that minimised AIC and manually explored if better alternatives were being obscured. <br>
