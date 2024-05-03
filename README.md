@@ -55,7 +55,7 @@ Since the devices operated at different frequencies, a synchronizer window was c
 - The `Biochip_listener` node dealt with all the rotation matrices by using the quternions to apply the $R_{T→B}$ transformation. This defined the normal direction coordinates(x,y,z) expressed in the Biotacs' frame. At the same time, it stored the corresponding sensor changes from the electrodes and the static pressure sensor. When it compiled all the information for a given sample, it published it as a ROS-log file.
 
 An example output of the `Biochip_listener` ROS-log file is [here](source/2_Raw_Data/biochip_listener_15330_1571242563995.log). These logs also defined the raw data that was to by manipulated during [Data Processing](#data-processing). <br>
-The script for `Biochip_listener` and the corresponding ROS node is found in [Biochip_listener.py](source/1_Data_Acquisition/biochip_listener.py)
+The script for `Biochip_listener` and the corresponding ROS node is found in [biochip_listener.py](source/1_Data_Acquisition/biochip_listener.py)
 
 ### Data Processing
 ---
