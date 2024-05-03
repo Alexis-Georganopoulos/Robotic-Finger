@@ -52,6 +52,10 @@ The full data processing pipeline is visualised below:
 
 The process is mediated by the script [extract_data.m](source/3_Data_Preprocessing/extract_data.m), and is largely automated. The other scripts, [litcount.m](source/3_Data_Preprocessing/litcount.m), [rem_off_edg.m](source/3_Data_Preprocessing/rem_off_edg.m), and [macroplot.m](source/3_Data_Preprocessing/macroplot.m) provide functions for repetitive utilities and debugging visualisations.<br>
 We can visualise the structure of the fully prepared data below:
+
+![final_dataset_blocks](imgs/final_dataset_blocks.png)
+
+The naming conventions for the text files is to the inputs and outputs for machine learning. For a given X.txt input data, we expect Y.txt as the output.
 ### Machine Learning Approaches
 ---
 #### Framework for all approaches
