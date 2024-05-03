@@ -135,9 +135,9 @@ In order to select candidate models, I limited the grid to the following ranges:
 Furthermore, during cross-validation, I recorded the **best** $R^2$ score for a given model, rather than its **median**.<br>
 My reasoning is as follows: a good simpler model would perform well on the test/train/validation sets, whereas a simpler, overfited model would only perform well on the test/train sets, and poorly on the validation set. And since I had the computation power, I could filter out the overfited models and keep the remainder as candidates.<br>
 After filtering them against the validation set, the best performing candidate had $L = 7, N = 5, l= 0.014$.<br>
-It important to note that the weights and biases were never saved during the search.
+**Its important to note that the weights and biases were never saved during the search**.
 
-To put this final candidate to the test, the issue of researcher overfitting was dealt with in two ways:
+To put this final candidate to the test, the issue of researcher overfiting was dealt with in two ways:
 1. Only data from trial 1 would be used for testing/training: While all trials used the same equipment, each trial was performed by different people under different conditions(room temperature, lighting, time, etc...). So to eliminate the possibility that the model was learning environmental queues, it has to perform comparably well on a different trial as it did from the one it learned from. This would confirm that it's actually picking up the underlying pattern for regression.
 2. A severe train/test ratio of 50%: Limiting the training data while maintaining good test performance indicates the model is correctly learning the underlying pattern.
 
@@ -199,4 +199,10 @@ After powering on the finger and connecting it to ROS(but before starting the ne
 This works very well when the finger is put in contact with thermally insulating materials, but I suspect it will begin to drift when pressed against thermally conducting materials. They will draw out the heat from the finger and lower the internal temperature, inducing a reversed drift.<br>
 This was never experimented upon further as it was outside the scope of the project. Letting the finger warm up and only using wood/plastic/etc.. surfaces was sufficient to nullify thermal drift for the interests of this project.
 ### Run the code
-To run the data processing pipeline and see the corresponding visuals, simply run [extract_data.m](source/3_Data_Preprocessing/extract_data.m). Some pre-rendered plots are found in the [matlab_plots](source/3_Data_Preprocessing/matlab_plots/) folder.
+To run the full data processing pipeline and see the corresponding visuals, simply run [extract_data.m](source/3_Data_Preprocessing/extract_data.m). Some pre-rendered plots are found in the [matlab_plots](source/3_Data_Preprocessing/matlab_plots/) folder.<br> <br>
+
+To run the full neural network training script, simply run the [nn_training.py](source/4_Neural_Training/nn_training.py) script. You will be prompted if you want to overwrite the weights, simply type 'no' until you fully understand the code. Several visuals will come out, as well as information in the terminal about the training process.<br><br>
+
+To replicate the data acquisition, run the [biochip_listener.py](source/1_Data_Acquisition/biochip_listener.py) script, but make sure to change the names of the subscriber nodes so that it corresponds to your setup.<br><br>
+
+To run the final implementation, adapt the [biochip_listener.py](source/1_Data_Acquisition/biochip_listener.py) script to publish the electrode data, then run the [biotac_NN.py](Final_NN/biotac_NN.py) script. This will start the `Biotac_NN` node which performs the regression in real-time with ROS. It prints its' prediction to the terminal. Make sure to adapt it to your setup.
