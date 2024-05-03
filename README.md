@@ -35,8 +35,19 @@ The Syntouch Biotac contains a variety of sensors, of interest are the
 
 ### Data processing
 ---
-After several trials of data acquisition, two were selected to be the dataset for machine learning purposes. These are [Trial 1](source/2_Raw_Data/biochip_listener_15330_1571242563995.log) and [Trial 2](source/2_Raw_Data/biochip_listener_15834_1571243162016.log). All other trials are found in the [Other_Raw_Unused](source/2_Raw_Data/Other_Raw_Unused/) folder. 
+After several trials of data acquisition, two were selected to be the dataset for machine learning purposes. These are [Trial 1](source/2_Raw_Data/biochip_listener_15330_1571242563995.log) and [Trial 2](source/2_Raw_Data/biochip_listener_15834_1571243162016.log). All other trials are found in the [Other_Raw_Unused](source/2_Raw_Data/Other_Raw_Unused/) folder. They were chosen because these trails lasted the longest, and gave an ample combined dataset of about 8000 points. The unused trials were used as a reference to make sure the data was being preprocessed correctly. But **note** that they are just as legitimate a dataset as Trials 1 and 2, albeit much smaller. Therefore they also serve as ample validation sets that are mutually unrelated(within the scope of the experimental setup).<br>
+The goal of this part is to remove irrelevant/invalid information, and to concatenate the dataset into the appropriate shapes. This is done is five steps:
+1. Moments when no contact was made with the surface of the Biotac are considered invalid. These were identified when the PDC(static pressure) fell bellow a minimum threshold, and we reject the corresponding data. Similarly, when the ROS nodes are first initialised, erroneous data gets recorded and must be removed. By symmetry, something similar happens when the nodes are terminated, the log files tend to mess up.
+2. After removing null data, it was stitched together directly at the removed discontinuities. The Machine learning methods would not make a prediction whilst considering time, but uniquely on the electrode values, so temporal jumps didn't matter for learning.
+3. The electrode sensors were not always consistent between the trials, they would measure slightly different readings for the same apparent force. Neglecting thermal noise, this effect was mitigated by centering(subtracting the mean) of the electrodes for a given trial. This allowed data from all the trials to be comparable.
+4. For machine learning, I wanted to use supervised learning. Therefore, my feature space is composed purely of the electrodes(19), and the corresponding 'labels' are purely the (x,y,z) coordinates of the normal direction. For a given trial, a single sample of the electrodes defined a row of feature data. They were all stacked chronologically on top of each other, so a matrix of roughly $4000\times19$. Similarly, the corresponding (x,y,z) coordinates were also stacked chronologically, roughly of size $4000\times3$. **The $n^{th}$ row of the (x,y,z) matrix corresponds to the normal direction that caused the electrodes to measure the  $n^{th}$ row in the electrode matrix.**
+5. Since the normal direction is normalised, it is redundant to keep all of its components. Since $x^2+y^2+z^2=1$, knowing two of the components allows us to determine the third. I arbitrarily chose to eject the y component. Similarly, the static pressure is not necessary for machine learning, so it is also ejected.
+
+The full data processing pipeline is visualised below:
 ![data pipeline](imgs/data_processing.png)
+
+The process is mediated by the script [extract_data.m](source/3_Data_Preprocessing/extract_data.m), and is largely automated. The other scripts, [litcount.m](source/3_Data_Preprocessing/litcount.m), [rem_off_edg.m](source/3_Data_Preprocessing/rem_off_edg.m), and [macroplot.m](source/3_Data_Preprocessing/macroplot.m) provide functions for repetitive utilities and debugging visualisations.<br>
+We can visualise the structure of the fully prepared data below:
 ### Machine Learning Approaches
 ---
 #### Framework for all approaches
