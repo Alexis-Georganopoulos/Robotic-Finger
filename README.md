@@ -63,7 +63,7 @@ When the reference normal was pressed against the finger, I wanted to capture th
 Each node was responsable for the following:
 - `/baseHand/pose` was the node that keeps track of the Biotacs' orientation in the global frame as a quaternion. It is a publisher. 
 - The `/normalSurface/pose` node kept track of the Normal surfaces' orientation in the global frame as a quaternion. It is a publisher.
-- The `/biotac_pub` node publishes the electrode and static pressure sensory information from the Biotac.
+- The `/biotac_pub` node publishes the electrode and static pressure sensory information from the Biotac. Normally the script for this comes with the purchase of the Biotac.
 
 Since the devices operated at different frequencies, a synchronizer window was created to make sure the orientations weren't being oversampled. The data from all sources, that were being sampled in real-time by ROS, had up to two milliseconds to fully change until the combined data was captured by the `Biochip_listener` subscriber node. The latter served the following purpose:
 
@@ -190,6 +190,18 @@ To get it to work required tightly constraining priors, however this significant
 ### Implemented Solution in ROS
 ---
 
+The idea is to dedicate a ROS node just for regression. Its subscribes to the `biotac_pub` node where it receives electrode and static pressure data from the Biotac. Within this `Biochip_nn` regression node, we find a basic finite-state machine, and follows the following sequence:
+1. The nerual network weights are loaded and the model is prepared
+2. The electrodes are recorded for 500ms, and their average is removed from every subsequent electrode reading(the electrode data gets centered)
+3. Regression begins. When an x-z coordinate is predicted, we use $y=\sqrt{1-x^2+z^2}$ to find the magnitude of y, and $\vec{x}\times\vec{y}=\vec{z}$ to deduce the sign. <br>
+   If, by chance, $1-x^2+z^2<0$, return 0 for the y coordinate(This never happens but just in case its good to have). Finally, if the static pressure falls below a certain threshold(so when nothing is touching the Biotac), return the coordinate $(0,0,0)$ 
+
+We can visualise this architecture in the following picture:
+
+![final implementation](imgs/final_architecure_ros.png)
+
+The implementation script in ROS for the `Biochip_NN` node is found in [biotac_NN.py](Final_NN/biotac_NN.py).
+
 ### Thermal Noise & Unwanted spurious effects
 ---
 A known issue was thermal noise during the use of the finger. Once turned on, the changing internal temperature would vary the readings of the electrodes, and slightly change the viscosity of the internal mediating fluid (thus affecting the static pressure readings). If left unaccounted for, it would cause the predicted x,y,z coordinates of the normal force to drift.<br>
@@ -205,4 +217,4 @@ To run the full neural network training script, simply run the [nn_training.py](
 
 To replicate the data acquisition, run the [biochip_listener.py](source/1_Data_Acquisition/biochip_listener.py) script, but make sure to change the names of the subscriber nodes so that it corresponds to your setup.<br><br>
 
-To run the final implementation, adapt the [biochip_listener.py](source/1_Data_Acquisition/biochip_listener.py) script to publish the electrode data, then run the [biotac_NN.py](Final_NN/biotac_NN.py) script. This will start the `Biotac_NN` node which performs the regression in real-time with ROS. It prints its' prediction to the terminal. Make sure to adapt it to your setup.
+To run the final implementation, run the [biotac_NN.py](Final_NN/biotac_NN.py) script. This will start the `Biotac_NN` node which performs the regression in real-time with ROS. It prints its' prediction to the terminal. Make sure to adapt it to your setup. It subscribes to the `biotac_pub` node, the latter script normally comes with the purchase of the Syntouch Biotac.
