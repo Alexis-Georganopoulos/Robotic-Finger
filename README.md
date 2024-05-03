@@ -9,7 +9,7 @@ The Syntouch Biotac is a robotic finger with multiple electrode and pressure sen
   - [Table of Contents](#table-of-contents)
   - [Introdction](#introdction)
   - [Data Acquisition](#data-acquisition)
-  - [Data processing](#data-processing)
+  - [Data Processing](#data-processing)
   - [Machine Learning Approaches](#machine-learning-approaches)
     - [Framework for all approaches](#framework-for-all-approaches)
     - [Multi-Layered Perceptron(Neural Network)](#multi-layered-perceptronneural-network)
@@ -28,12 +28,36 @@ The Syntouch Biotac contains a variety of sensors, of interest are the
 
 ### Data Acquisition
 ---
-
+The direction of the normal force was decided to be normalised. I was not interested in the magnitude of the normal force, only its' direction. Therefore, its vector components were normalised: $x^2+y^2+z^2 = 1$. <br>
+The goal of this section is to transform and incoming normal force into the local frame of the Biotac, ie: from which direction is the force coming from, from the Biotacs' perspective? I call this frame the Biotac frame.<br>
+To create the normal force, I had a simple, flat plastic surface that defined a normal surface. Since a plane is defined by its' perpendicular direction, the normal force(reference normal) was defined as the perpendicular to the normal surface. Consequently, the Normal surface would have its own local frame that followed the direction of the reference normal. This frame is called the Tracker frame.<br>
+The idea is to rotate the Tracker frame into the Biotac frame, so that when the normal surface is pressed against the finger, the reference normal can be expressed from the perspective of the Biotac. We can visualise this below:
 ![tracker frame](imgs/Capture.PNG.png)
-![frame transform](imgs/frametransform.png)
+
+The implementation was mediated with a global frame that tracked the orientations of both the Biotac and Normal surface. In order for the global frame to keep track of both objects, fluorescent bulbs were placed on the Normal surface(thus defining its plane) and on the base of the Biotac mount. This way the global frame kept track of both objects at the same time in the global frame of reference.<br>
+Its easy to deduce the rotation matrices from all the local frames into the global frame. The idea is to chain these matrices so that the net transformations turns the reference normal into the Biotacs' frame. The image below demonstrates the full reasoning:
+
+![global frame](imgs/frametransform.png)
+
+So we know the matrices $R_{T→G}$ and $R_{B→G}$, and I wanted matrix $R_{T→B}$ <br><br>
+
+When the reference normal was pressed against the finger, I wanted to capture the corresponding sensor changes in the finger. For the purposes of this project, I decided to measure the electrode and static pressure(PDC) information. To make sure this was all synchronised, I used ROS to simultaneously handle the frame rotations and record the sensor readings. The full architecture is shown below:
+
 ![ROS data capture architecture](imgs/synchroniser.png)
 
-### Data processing
+Each node was responsable for the following:
+- `/baseHand/pose` was the node that keeps track of the Biotacs' orientation in the global frame as a quaternion. It is a publisher. 
+- The `/normalSurface/pose` node kept track of the Normal surfaces' orientation in the global frame as a quaternion. It is a publisher.
+- The `/biotac_pub` node publishes the electrode and static pressure sensory information from the Biotac.
+
+Since the devices operated at different frequencies, a synchronizer window was created to make sure the orientations weren't being oversampled. The data from all sources, that wre being sampled in real-time by ROS, had up to two milliseconds to fully change until the combined data was captured by the `Biochip_listener` subscriber node. The latter served the following purpose:
+
+- The `Biochip_listener` node dealt with all the rotation matrices by using the quternions to apply the $R_{T→B}$ transformation. This defined the normal direction coordinates(x,y,z) expressed in the Biotacs' frame. At the same time, it stored the corresponding sensor changes from the electrodes and the static pressure sensor. When it compiled all the information for a given sample, it published it as a ROS-log file.
+
+An example output of the `Biochip_listener` ROS-log file is [here](source/2_Raw_Data/biochip_listener_15330_1571242563995.log). These logs also defined the raw data that was to by manipulated during [Data Processing](#data-processing). <br>
+The script for `Biochip_listener` and the corresponding ROS node is found in [Biochip_listener.py](source/1_Data_Acquisition/biochip_listener.py)
+
+### Data Processing
 ---
 After several trials of data acquisition, two were selected to be the dataset for machine learning purposes. These are [Trial 1](source/2_Raw_Data/biochip_listener_15330_1571242563995.log) and [Trial 2](source/2_Raw_Data/biochip_listener_15834_1571243162016.log). All other trials are found in the [Other_Raw_Unused](source/2_Raw_Data/Other_Raw_Unused/) folder. They were chosen because these trails lasted the longest, and gave an ample combined dataset of about 8000 points. The unused trials were used as a reference to make sure the data was being preprocessed correctly. But **note** that they are just as legitimate a dataset as Trials 1 and 2, albeit much smaller. Therefore they also serve as ample validation sets that are mutually unrelated(within the scope of the experimental setup).<br>
 The goal of this part is to remove irrelevant/invalid information, and to concatenate the dataset into the appropriate shapes. This is done is five steps:
@@ -60,6 +84,7 @@ The naming conventions for the text files is to the inputs and outputs for machi
 ---
 #### Framework for all approaches
 All code relating to machine learning was done in the `SciKit-Learn` python package, except for GPR. This was done in MatLab using the `ML-toolbox` package.<br>
+I used a supervised learning approach. The electrode data was the inputs to all our models, and the x and z data was the excpected outputs. So the 'labels' of our electrode data are the corresponding x-z coordinates. After training, I wanted the predicted x-z coordinates to match the 'labeled' coordinates.
 The main metric used to determine the goodness of fit for regression was the coefficient of determination, $R^2$. I seek to minimise model complexity for a performance of at least $R^2 = 0.7$, but ideally it would be more. The optimal model parameters were determined with a grid search. For a given gridpoint(a given permutation of hyperparameters), 5-fold cross validation was used to train/retrain a model, and extract the $R^2$ value for each test-fold in the 5-fold. The **median** $R^2$ value was chosen to represent the performance for _that_ permutation of hyperparameters.<br>
 AIC was used as a way to discriminate against more complex models in a given gridsearch. <br>
 Given that the AIC criterion tends to favour performance at the expense of greater model complexity, this metric was only indicative for my experiments. I would look at the permutation of hyperparameters that minimised AIC and manually explored if better alternatives were being obscured. <br>
