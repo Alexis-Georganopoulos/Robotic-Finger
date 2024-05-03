@@ -41,6 +41,7 @@ The goal of this part is to remove irrelevant/invalid information, and to concat
 2. After removing null data, it was stitched together directly at the removed discontinuities. The Machine learning methods would not make a prediction whilst considering time, but uniquely on the electrode values, so temporal jumps didn't matter for learning.
 3. The electrode sensors were not always consistent between the trials, they would measure slightly different readings for the same apparent force. Neglecting thermal noise, this effect was mitigated by centering(subtracting the mean) of the electrodes for a given trial. This allowed data from all the trials to be comparable.
 4. For machine learning, I wanted to use supervised learning. Therefore, my feature space is composed purely of the electrodes(19), and the corresponding 'labels' are purely the (x,y,z) coordinates of the normal direction. For a given trial, a single sample of the electrodes defined a row of feature data. They were all stacked chronologically on top of each other, so a matrix of roughly $4000\times19$. Similarly, the corresponding (x,y,z) coordinates were also stacked chronologically, roughly of size $4000\times3$. **The $n^{th}$ row of the (x,y,z) matrix corresponds to the normal direction that caused the electrodes to measure the  $n^{th}$ row in the electrode matrix.** We visualise this below:
+
 ![dataset_blocks](imgs/dataset_blocks.png)
 
 
