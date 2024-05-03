@@ -51,7 +51,7 @@ Each node was responsable for the following:
 - The `/normalSurface/pose` node kept track of the Normal surfaces' orientation in the global frame as a quaternion. It is a publisher.
 - The `/biotac_pub` node publishes the electrode and static pressure sensory information from the Biotac.
 
-Since the devices operated at different frequencies, a synchronizer window was created to make sure the orientations weren't being oversampled. The data from all sources, that wrEe being sampled in real-time by ROS, had up to two milliseconds to fully change until the combined data was captured by the `Biochip_listener` subscriber node. The latter served the following purpose:
+Since the devices operated at different frequencies, a synchronizer window was created to make sure the orientations weren't being oversampled. The data from all sources, that were being sampled in real-time by ROS, had up to two milliseconds to fully change until the combined data was captured by the `Biochip_listener` subscriber node. The latter served the following purpose:
 
 - The `Biochip_listener` node dealt with all the rotation matrices by using the quternions to apply the $R_{T→B}$ transformation. This defined the normal direction coordinates(x,y,z) expressed in the Biotacs' frame. At the same time, it stored the corresponding sensor changes from the electrodes and the static pressure sensor. When it compiled all the information for a given sample, it published it as a ROS-log file.
 
