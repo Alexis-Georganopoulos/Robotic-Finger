@@ -32,6 +32,7 @@ The direction of the normal force was decided to be normalised. I was not intere
 The goal of this section is to transform and incoming normal force into the local frame of the Biotac, ie: from which direction is the force coming from, from the Biotacs' perspective? I call this frame the Biotac frame.<br>
 To create the normal force, I had a simple, flat plastic surface that defined a normal surface. Since a plane is defined by its' perpendicular direction, the normal force(reference normal) was defined as the perpendicular to the normal surface. Consequently, the Normal surface would have its own local frame that followed the direction of the reference normal. This frame is called the Tracker frame.<br>
 The idea is to rotate the Tracker frame into the Biotac frame, so that when the normal surface is pressed against the finger, the reference normal can be expressed from the perspective of the Biotac. We can visualise this below:
+
 ![tracker frame](imgs/Capture.PNG.png)
 
 The implementation was mediated with a global frame that tracked the orientations of both the Biotac and Normal surface. In order for the global frame to keep track of both objects, fluorescent bulbs were placed on the Normal surface(thus defining its plane) and on the base of the Biotac mount. This way the global frame kept track of both objects at the same time in the global frame of reference.<br>
