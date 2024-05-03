@@ -24,7 +24,21 @@ The Syntouch Biotac is a robotic finger with multiple electrode and pressure sen
 
 ### Introdction
 ---
-The Syntouch Biotac contains a variety of sensors, of interest are the 
+The Syntouch Biotac contains a variety of sensors, including 19 electrodes, a static pressure sensor, and a thermistor.<br>
+The finger itself is these sensors wrapped around a silicone sheet, that emulates textured skin. In-between the silicone and the sensors is a viscous, conducting, mediating fluid that emulates the "squishiness" of a human finger. A summary visual is shown below.
+
+![biotac overview](imgs/biotac_overview.png)
+ 
+Note that the electrode sensors `V1` and `V2` are never considered in this project. 
+As a force is pressed on the textured skin, the conducting fluid changes the readings of the electrodes. These changes are non-linear. At the same time, the static pressure sensor increases its readings, indicating that the mediating fluid is being compressed.<br>
+When the finger experiences this force, I want to know which direction this it is coming from(I'm not interested in the magnitude of the force) from the perspective of the finger.<br>
+The long term goal is to use this project as a stepping stone: Once the finger can deduce where a force is coming from, you can group five fingers together to emulate a human hand. Once an object is placed into the hand, could it deduce something about its' shape just from touch? Imagine picking something out of your pocket. Just by touch you can deduce what you are holding. This is the long-term goal.<br>
+But for the scope of this project, I wanted to use machine learning to allow the Biotac to deduce the direction of an incoming force.<br>
+ The latter can be interpreted as a normal-directioned force, as when we "zoom in" to the area of force application, we will find a small area on the textured surface that is exactly perpendicular to the forces' direction. <br>
+ For the interests of this project, I therefore used the data from the electrodes and the static pressure sensor.<br>
+ Although the thermistor could be used to help mitigate [Thermal Noise](#thermal-noise--unwanted-spurious-effects), it was ultimately not necessary. This sensor was not used at all.
+
+ Note that in principal, I could have used simple geometry to estimate the direction of the incoming force. Knowing the layout of the electrodes, and knowing their readings, would lead to an analytic solution. However the non-linearities of the conducting fluid makes an analytic model as good as random guess. Since an analytic solution isn't viable, I used machine learning.
 
 ### Data Acquisition
 ---
@@ -185,3 +199,4 @@ After powering on the finger and connecting it to ROS(but before starting the ne
 This works very well when the finger is put in contact with thermally insulating materials, but I suspect it will begin to drift when pressed against thermally conducting materials. They will draw out the heat from the finger and lower the internal temperature, inducing a reversed drift.<br>
 This was never experimented upon further as it was outside the scope of the project. Letting the finger warm up and only using wood/plastic/etc.. surfaces was sufficient to nullify thermal drift for the interests of this project.
 ### Run the code
+To run the data processing pipeline and see the corresponding visuals, simply run [extract_data.m](source/3_Data_Preprocessing/extract_data.m). Some pre-rendered plots are found in the [matlab_plots](source/3_Data_Preprocessing/matlab_plots/) folder.
