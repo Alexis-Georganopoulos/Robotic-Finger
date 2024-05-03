@@ -43,6 +43,8 @@ The goal of this part is to remove irrelevant/invalid information, and to concat
 4. For machine learning, I wanted to use supervised learning. Therefore, my feature space is composed purely of the electrodes(19), and the corresponding 'labels' are purely the (x,y,z) coordinates of the normal direction. For a given trial, a single sample of the electrodes defined a row of feature data. They were all stacked chronologically on top of each other, so a matrix of roughly $4000\times19$. Similarly, the corresponding (x,y,z) coordinates were also stacked chronologically, roughly of size $4000\times3$. **The $n^{th}$ row of the (x,y,z) matrix corresponds to the normal direction that caused the electrodes to measure the  $n^{th}$ row in the electrode matrix.** We visualise this below:
    
     ![dataset_blocks](imgs/dataset_blocks.png)
+
+    
 5. Since the normal direction is normalised, it is redundant to keep all of its components. Since $x^2+y^2+z^2=1$, knowing two of the components allows us to determine the third. I arbitrarily chose to eject the y component. Similarly, the static pressure is not necessary for machine learning, so it is also ejected.
 
 The full data processing pipeline is visualised below:
