@@ -22,7 +22,7 @@ The Syntouch Biotac is a robotic finger with multiple electrode and pressure sen
   - [Thermal Noise \& Unwanted spurious effects](#thermal-noise--unwanted-spurious-effects)
   - [Run the code](#run-the-code)
 
-### Introdction
+### Introduction
 ---
 The Syntouch Biotac contains a variety of sensors, including 19 electrodes, a static pressure sensor, and a thermistor.<br>
 The finger itself is these sensors wrapped around a silicone sheet, that emulates textured skin. In-between the silicone and the sensors is a viscous, conducting, mediating fluid that emulates the "squishiness" of a human finger. A summary visual is shown below.
